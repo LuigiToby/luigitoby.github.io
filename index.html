@@ -1,21 +1,71 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Luigi | Engineer & Maker</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div class="card">
-    <img src="assets/profile.jpg" alt="Luigi" class="profile" />
-    <h1>Luigi</h1>
-    <p>Mechanical Engineer & Computer Science Student</p>
-    <div class="links">
-      <a href="https://github.com/yourusername">GitHub</a>
-      <a href="mailto:your@email.com">Email</a>
-      <a href="#">Resume</a>
-    </div>
-  </div>
-</body>
-</html>
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #000000;
+  color: #e0e0e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.card {
+  background: #111111;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  max-width: 360px;
+  width: 90%;
+}
+
+.profile {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  border: 2px solid #444;
+}
+
+h1 {
+  color: #d782d9; /* purple */
+  margin-bottom: 0.5rem;
+}
+
+p {
+  color: #999;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+.links a {
+  display: block;
+  color: #61afef; /* blue */
+  margin: 0.5rem 0;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.links a:hover {
+  color: #98c379; /* green */
+  text-decoration: underline;
+}
+
+.downloads {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+.downloads a {
+  display: block;
+  color: #e06c75; /* red */
+  margin: 0.3rem 0;
+  text-decoration: none;
+}
+
+.downloads a:hover {
+  color: #e5c07b; /* yellow */
+  text-decoration: underline;
+}
