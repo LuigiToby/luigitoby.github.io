@@ -1,71 +1,34 @@
-body {
-  font-family: 'Inter', sans-serif;
-  background-color: #000000;
-  color: #e0e0e0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Luigi | Engineer & Maker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="card">
+    <img src="assets/profile.jpg" alt="Luigi" class="profile" />
+    <h1>Luigi</h1>
+    <p>Mechanical Engineering Student | Computer Science Minor</p>
 
-.card {
-  background: #111111;
-  padding: 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-  text-align: center;
-  max-width: 360px;
-  width: 90%;
-}
+    <div class="links">
+      <a href="https://www.youtube.com/@yourchannel1" target="_blank">YouTube Channel 1</a>
+      <a href="https://www.youtube.com/@yourchannel2" target="_blank">YouTube Channel 2</a>
+      <a href="https://vsco.co/yourusername/gallery" target="_blank">VSCO</a>
+      <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+      <a href="https://www.printables.com/@yourusername" target="_blank">Printables (CAD)</a>
+      <a href="https://t.me/yourtelegram" target="_blank">Telegram</a>
+      <a href="mailto:your@email.com">Email</a>
+      <a href="#">Resume / Business Card</a>
+    </div>
 
-.profile {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 50%;
-  margin-bottom: 1rem;
-  border: 2px solid #444;
-}
-
-h1 {
-  color: #d782d9; /* purple */
-  margin-bottom: 0.5rem;
-}
-
-p {
-  color: #999;
-  margin-top: 0;
-  margin-bottom: 1.5rem;
-}
-
-.links a {
-  display: block;
-  color: #61afef; /* blue */
-  margin: 0.5rem 0;
-  text-decoration: none;
-  transition: 0.2s;
-}
-
-.links a:hover {
-  color: #98c379; /* green */
-  text-decoration: underline;
-}
-
-.downloads {
-  margin-top: 1.5rem;
-  font-size: 0.9rem;
-  color: #aaa;
-}
-
-.downloads a {
-  display: block;
-  color: #e06c75; /* red */
-  margin: 0.3rem 0;
-  text-decoration: none;
-}
-
-.downloads a:hover {
-  color: #e5c07b; /* yellow */
-  text-decoration: underline;
-}
+    <div class="downloads">
+      <p>📄 Download CVs:</p>
+      <a href="assets/CV_en.pdf" download>CV - English</a>
+      <a href="assets/CV_es.pdf" download>CV - Español</a>
+    </div>
+  </div>
+</body>
+</html>
