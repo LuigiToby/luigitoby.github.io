@@ -1,22 +1,24 @@
 body {
+  background-color: #000;
+  color: #fff;
   font-family: 'Inter', sans-serif;
-  background-color: #000000;
-  color: #e0e0e0;
+  margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  margin: 0;
+  min-height: 100vh;
 }
 
 .card {
-  background: #111111;
+  max-width: 480px; /* Wider card */
+  width: 90%;
   padding: 2rem;
   border-radius: 1rem;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  background-color: #000;
   text-align: center;
-  max-width: 360px;
-  width: 90%;
+  border: 1px solid #fff;
+  position: relative;
+  z-index: 1;
 }
 
 .profile {
@@ -25,47 +27,95 @@ body {
   object-fit: cover;
   border-radius: 50%;
   margin-bottom: 1rem;
-  border: 2px solid #444;
+  border: 2px solid #fff;
 }
 
 h1 {
-  color: #d782d9; /* purple */
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: #ccc;
+}
+
+.bio {
   margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #bbb;
+  text-align: justify;      /* Justifies the text */
+  display: flex;
+  justify-content: center;  /* Centers the bio block itself */
 }
 
-p {
-  color: #999;
-  margin-top: 0;
-  margin-bottom: 1.5rem;
+.links {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the group of links in the card */
+  gap: 0.3rem;
+  margin-bottom: 1rem;
 }
 
-.links a {
-  display: block;
-  color: #61afef; /* blue */
-  margin: 0.5rem 0;
+.link-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; /* Center the row as a whole */
+  min-width: 180px; /* Optional: ensures all rows have the same width */
+  gap: 0.8rem;
+  padding: 0.4rem 0.6rem;
   text-decoration: none;
-  transition: 0.2s;
+  color: #fff;
+  transition: transform 0.2s;
+  font-size: 1rem;
+  border-radius: 0.3rem;
 }
 
-.links a:hover {
-  color: #98c379; /* green */
-  text-decoration: underline;
+.link-row:hover {
+  transform: scale(1.05);
+  background-color: #111;
+}
+
+.link-label {
+  font-family: monospace;
+  flex: 0 0 48px; /* Fixed width for label column */
+  text-align: right;
+}
+
+.link-text {
+  flex: 1;
+  text-align: left;
+  white-space: nowrap;
 }
 
 .downloads {
-  margin-top: 1.5rem;
   font-size: 0.9rem;
-  color: #aaa;
 }
 
 .downloads a {
-  display: block;
-  color: #e06c75; /* red */
-  margin: 0.3rem 0;
+  color: #fff;
   text-decoration: none;
+  display: block;
+  margin-top: 0.3rem;
+  transition: transform 0.2s;
 }
 
 .downloads a:hover {
-  color: #e5c07b; /* yellow */
-  text-decoration: underline;
+  transform: scale(1.05);
 }
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.typewriter-cursor {
+  display: inline-block;
+  width: 1ch;
+  color: #fff;
+  background: none;
+  animation: blink 1s steps(1) infinite;
+}
+

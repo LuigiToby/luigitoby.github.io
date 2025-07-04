@@ -3,32 +3,56 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Luigi | Engineer & Maker</title>
+  <title>Luis Alejandro Rodríguez Arenas bio</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <pre id="ascii-stars"></pre>
+
   <div class="card">
     <img src="assets/profile.jpg" alt="Luigi" class="profile" />
-    <h1>Luigi</h1>
-    <p>Mechanical Engineering Student | Computer Science Minor</p>
+    <h1 id="typewriter">Luis Alejandro Rodríguez Arenas</h1>
+    <p class="subtitle">AKA: Luigi, LuigiToby, Luis</p>
+    <p class="subtitle">Mechanical Engineering Student | Computer Science Minor</p>
+
+    <div class="bio">
+      <p>I'm a mechanical engineering student from Bogotá, Colombia, with a strong interest in the aerospace sector, my north star, as I explore the intersections of engineering, design, and technology. While aerospace continues to inspire my direction, I approach my career with a lifestyle-centric mindset, seeking opportunities that align with curiosity, creativity, and meaningful impact.</p>
+    </div>
 
     <div class="links">
-      <a href="https://www.youtube.com/@yourchannel1" target="_blank">YouTube Channel 1</a>
-      <a href="https://www.youtube.com/@yourchannel2" target="_blank">YouTube Channel 2</a>
-      <a href="https://vsco.co/yourusername/gallery" target="_blank">VSCO</a>
-      <a href="https://github.com/yourusername" target="_blank">GitHub</a>
-      <a href="https://www.printables.com/@yourusername" target="_blank">Printables (CAD)</a>
-      <a href="https://t.me/yourtelegram" target="_blank">Telegram</a>
-      <a href="mailto:your@email.com">Email</a>
-      <a href="#">Resume / Business Card</a>
+      <a class="link-row" href="https://www.youtube.com/@yourchannel1" target="_blank"><span class="link-label">[YT]</span><span class="link-text">YouTube</span></a>
+      <a class="link-row" href="https://vsco.co/yourusername/gallery" target="_blank"><span class="link-label">[VSCO]</span><span class="link-text">VSCO</span></a>
+      <a class="link-row" href="https://github.com/yourusername" target="_blank"><span class="link-label">[GH]</span><span class="link-text">GitHub</span></a>
+      <a class="link-row" href="https://www.printables.com/@yourusername" target="_blank"><span class="link-label">[CAD]</span><span class="link-text">Printables</span></a>
+      <a class="link-row" href="mailto:your@email.com"><span class="link-label">[MAIL]</span><span class="link-text">Email</span></a>
+      <a class="link-row" href="https://t.me/yourtelegram" target="_blank"><span class="link-label">[TG]</span><span class="link-text">Telegram</span></a>
     </div>
 
     <div class="downloads">
-      <p>📄 Download CVs:</p>
+      <h2>Download CVs:</h2>
       <a href="assets/CV_en.pdf" download>CV - English</a>
       <a href="assets/CV_es.pdf" download>CV - Español</a>
     </div>
   </div>
+
+  <script>
+const name = "Luis Alejandro Rodríguez Arenas";
+const target = document.getElementById("typewriter");
+let i = 0;
+
+function typeWriter() {
+  if (i <= name.length) {
+    target.innerHTML = name.slice(0, i) + '<span class="typewriter-cursor">|</span>';
+    i++;
+    setTimeout(typeWriter, 100); // Adjust speed here (ms)
+  } else {
+    target.innerHTML = name + '<span class="typewriter-cursor">|</span>';
+  }
+}
+
+typeWriter();
+
+</script>
 </body>
 </html>
