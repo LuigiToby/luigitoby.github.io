@@ -1,0 +1,184 @@
+{
+  "selectedTemplate": 5,
+  "headings": {
+    "work": "Experiencia",
+    "skills": "Habilidades",
+    "projects": "Proyectos",
+    "awards": "Reconocimientos",
+    "education": "Educación"
+  },
+  "basics": {
+    "name": "Luis Alejandro Rodríguez Arenas",
+    "email": "alejandro.rodriguez3386@gmail.com",
+    "phone": "+57 3193266341",
+    "location": {
+      "address": "Bogotá, Colombia"
+    },
+    "website": "https://luigitoby.github.io/"
+  },
+  "education": [
+    {
+      "location": "Bogotá, Colombia",
+      "endDate": "2023-07-30",
+      "gpa": "3.9",
+      "institution": "Colegio San Carlos",
+      "studyType": "Bachiller Académico",
+      "startDate": "2017-08-20"
+    },
+    {
+      "institution": "Universidad Nacional de Colombia",
+      "location": "Bogotá, Colombia",
+      "gpa": "3.7",
+      "startDate": "2023-08-08",
+      "endDate": "2023-12-01",
+      "studyType": "Cursos de pregrado",
+      "area": "Ingeniería Mecatrónica (transferencia)"
+    },
+    {
+      "institution": "Universidad de los Andes",
+      "location": "Bogotá, Colombia",
+      "studyType": "Pregrado",
+      "area": "Ingeniería Mecánica, Opción en Matemáticas Computacionales",
+      "gpa": "3.7",
+      "startDate": "2024-01-20",
+      "endDate": "Actualmente"
+    }
+  ],
+  "work": [],
+  "skills": [
+    {
+      "name": "Software CAD",
+      "keywords": [
+        "OnShape",
+        "Inventor",
+        "Fusion360"
+      ]
+    },
+    {
+      "name": "Simulación y Análisis",
+      "keywords": [
+        "ANSYS",
+        "OpenRocket",
+        "Rocksim"
+      ]
+    },
+    {
+      "name": "Programación y Herramientas",
+      "keywords": [
+        "Python (uso científico)",
+        "C++",
+        "Arduino",
+        "MATLAB",
+        "Git"
+      ]
+    },
+    {
+      "name": "Idiomas",
+      "keywords": [
+        "Español (Nativo)",
+        "Inglés (B2)",
+        "Francés (B1)"
+      ]
+    },
+    {
+      "name": "Colaboración en Equipo",
+      "keywords": [
+        "Coordinación de proyectos",
+        "Liderazgo estudiantil"
+      ]
+    },
+    {
+      "name": "Habilidades Blandas",
+      "keywords": [
+        "Resolución de problemas",
+        "Adaptabilidad",
+        "Comunicación"
+      ]
+    },
+    {
+      "name": "Aeroespacial y Cohetería",
+      "keywords": [
+        "Cohetes",
+        "Propulsión iónica"
+      ]
+    },
+    {
+      "name": "Investigación y Desarrollo",
+      "keywords": [
+        "Revisión bibliográfica",
+        "Desarrollo de prototipos"
+      ]
+    },
+    {
+      "name": "Documentación",
+      "keywords": [
+        "LaTeX",
+        "Markdown",
+        "Redacción técnica"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Club de Robótica y Makerspace en Secundaria",
+      "description": "Lideré el club de robótica (grados 10°–11°) y cofundé un espacio de creación en el Colegio San Carlos con impresora 3D y herramientas para la innovación estudiantil.",
+      "url": "",
+      "keywords": [
+        "Robótica",
+        "Liderazgo",
+        "Makerspace",
+        "Educación"
+      ]
+    },
+    {
+      "name": "Proyecto de Investigación en Propulsión Iónica",
+      "description": "Participé en las etapas iniciales de un proyecto de investigación sobre sistemas de propulsión iónica en la Universidad de los Andes. Enfocado en diseño preliminar y revisión de literatura desde comienzos de 2024 hasta mitad de año.",
+      "url": "",
+      "keywords": [
+        "Propulsión iónica",
+        "Investigación espacial",
+        "Propulsión"
+      ]
+    },
+    {
+      "name": "Desarrollo de Cohete Sonda – SpaceTech Cohetería",
+      "description": "Actualmente contribuyendo al desarrollo de un cohete de cohetería amateur reforzado con fibra de carbono como parte de la división de cohetería de la iniciativa SpaceTech de la Universidad de los Andes. Enfocado en integración mecánica y componentes estructurales.",
+      "url": "",
+      "keywords": [
+        "Cohetería",
+        "Fibra de carbono",
+        "Ingeniería Mecánica",
+        "Aeroespacial"
+      ]
+    }
+  ],
+  "awards": [
+    {
+      "title": "Participación – OLAA 2020 (Olimpiada Latinoamericana de Astronomía y Astronáutica)",
+      "date": "2020-10-01",
+      "awarder": "Comité OLAA",
+      "summary": "Participación en la Olimpiada Latinoamericana de Astronomía representando a Colombia."
+    },
+    {
+      "title": "Participación – IOAA 2022 (Olimpiada Internacional de Astronomía y Astrofísica)",
+      "date": "2022-08-15",
+      "awarder": "Comité IOAA",
+      "summary": "Representé a Colombia en el evento internacional realizado en Kutaisi, Georgia."
+    },
+    {
+      "title": "Beca de Excelencia Académica del Banco de la República",
+      "date": "2023-12-15",
+      "awarder": "Banco de la República",
+      "summary": "Otorgada por obtener uno de los puntajes más altos a nivel nacional en el examen Saber 11 en 2023."
+    }
+  ],
+  "sections": [
+    "templates",
+    "profile",
+    "education",
+    "work",
+    "skills",
+    "projects",
+    "awards"
+  ]
+}

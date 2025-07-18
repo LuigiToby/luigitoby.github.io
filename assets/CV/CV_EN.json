@@ -1,0 +1,184 @@
+{
+  "selectedTemplate": 5,
+  "headings": {
+    "work": "",
+    "skills": "",
+    "projects": "",
+    "awards": "",
+    "education": ""
+  },
+  "basics": {
+    "name": "Luis Alejandro Rodríguez Arenas",
+    "email": "alejandro.rodriguez3386@gmail.com",
+    "phone": "+57 3193266341",
+    "location": {
+      "address": "Bogotá. Colombia"
+    },
+    "website": "https://luigitoby.github.io/"
+  },
+  "education": [
+    {
+      "location": "Bogotá, Colombia",
+      "endDate": "2023-07-30",
+      "gpa": "3.9",
+      "institution": "Colegio San Carlos",
+      "studyType": "Bachiller Académico",
+      "startDate": "2017-08-20"
+    },
+    {
+      "institution": "Universidad Nacional de Colombia",
+      "location": "Bogotá, Colombia",
+      "gpa": "3.7",
+      "startDate": "2023-08-08",
+      "endDate": "2023-12-01",
+      "studyType": "Undergraduate coursework",
+      "area": "Mechatronical Engineering (transferred)"
+    },
+    {
+      "institution": "Universidad de los Andes",
+      "location": "Bogotá, Colombia",
+      "studyType": "BS",
+      "area": "Mechanical Engineering, Minor in Mathematical Computing",
+      "gpa": "3.7",
+      "startDate": "2024-01-20",
+      "endDate": "Currently"
+    }
+  ],
+  "work": [],
+  "skills": [
+    {
+      "name": "CAD Software",
+      "keywords": [
+        "OnShape",
+        "Inventor",
+        "Fusion360"
+      ]
+    },
+    {
+      "name": "Simulation & Analysis",
+      "keywords": [
+        "ANSYS",
+        "OpenRocket",
+        "Rocksim"
+      ]
+    },
+    {
+      "name": "Programming & Tools",
+      "keywords": [
+        "Python (scientific use)",
+        "C++",
+        "Arduino",
+        "MATLAB",
+        "Git"
+      ]
+    },
+    {
+      "name": "Languages",
+      "keywords": [
+        "Spanish (Native)",
+        "English (B2)",
+        "French (B1)"
+      ]
+    },
+    {
+      "name": "Team Collaboration",
+      "keywords": [
+        "Project coordination",
+        "Student team leadership"
+      ]
+    },
+    {
+      "name": "Soft Skills",
+      "keywords": [
+        "Problem-solving",
+        "Adaptability",
+        "Communication"
+      ]
+    },
+    {
+      "name": "Aerospace & Rocketry",
+      "keywords": [
+        "Sounding Rockets",
+        "Ion Propulsion"
+      ]
+    },
+    {
+      "name": "Research & Development",
+      "keywords": [
+        "Literature review",
+        "Prototype development"
+      ]
+    },
+    {
+      "name": "Documentation",
+      "keywords": [
+        "LaTeX",
+        "Markdown",
+        "Technical Writing"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "High School Robotics Club & Makerspace",
+      "description": "Led the robotics club (10th–11th grade) and co-founded a makerspace at Colegio San Carlos with a 3D printer and tools for student innovation.",
+      "url": "",
+      "keywords": [
+        "Robotics",
+        "Leadership",
+        "Makerspace",
+        "Education"
+      ]
+    },
+    {
+      "name": "Ion Thruster Research Project",
+      "description": "Participated in the early development of an ion propulsion system research project at Universidad de los Andes. Involved in initial design and literature review stages from early 2024 until mid-year.",
+      "url": "",
+      "keywords": [
+        "Ion propulsion",
+        "Space research",
+        "Propulsion"
+      ]
+    },
+    {
+      "name": "Sounding Rocket Development – SpaceTech Cohetería",
+      "description": "Currently contributing to the development of a carbon fiber-reinforced sounding rocket as part of the rocketry division of Universidad de los Andes' SpaceTech initiative. Focused on mechanical integration and structural components.",
+      "url": "",
+      "keywords": [
+        "Rocketry",
+        "Carbon fiber",
+        "Mechanical Engineering",
+        "Aerospace"
+      ]
+    }
+  ],
+  "awards": [
+    {
+      "title": "Participation – OLAA 2020 (Latin American Astronomy Olympiad)",
+      "date": "2020-10-01",
+      "awarder": "OLAA Committee",
+      "summary": "Participated in the Latin American Astronomy Olympiad representing Colombia."
+    },
+    {
+      "title": "Participation – IOAA 2022 (International Olympiad on Astronomy and Astrophysics)",
+      "date": "2022-08-15",
+      "awarder": "IOAA Committee",
+      "summary": "Represented Colombia in the international event held in Kutaisi, Georgia."
+    },
+    {
+      "title": "Banco de la República Academic Excellence Scholarship",
+      "date": "2023-12-15",
+      "awarder": "Banco de la República",
+      "summary": "Awarded for achieving one of the highest national scores in the Saber 11 exam in 2023."
+    }
+  ],
+  "sections": [
+    "templates",
+    "profile",
+    "education",
+    "work",
+    "skills",
+    "projects",
+    "awards"
+  ]
+}

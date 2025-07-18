@@ -1,0 +1,184 @@
+{
+  "selectedTemplate": 5,
+  "headings": {
+    "work": "Expérience",
+    "skills": "Compétences",
+    "projects": "Projets",
+    "awards": "Récompenses",
+    "education": "Formation"
+  },
+  "basics": {
+    "name": "Luis Alejandro Rodríguez Arenas",
+    "email": "alejandro.rodriguez3386@gmail.com",
+    "phone": "+57 3193266341",
+    "location": {
+      "address": "Bogotá, Colombie"
+    },
+    "website": "https://luigitoby.github.io/"
+  },
+  "education": [
+    {
+      "location": "Bogotá, Colombie",
+      "endDate": "2023-07-30",
+      "gpa": "3.9",
+      "institution": "Colegio San Carlos",
+      "studyType": "Baccalauréat académique",
+      "startDate": "2017-08-20"
+    },
+    {
+      "institution": "Universidad Nacional de Colombia",
+      "location": "Bogotá, Colombie",
+      "gpa": "3.7",
+      "startDate": "2023-08-08",
+      "endDate": "2023-12-01",
+      "studyType": "Cours de premier cycle",
+      "area": "Génie mécatronique (transfert)"
+    },
+    {
+      "institution": "Universidad de los Andes",
+      "location": "Bogotá, Colombie",
+      "studyType": "Licence",
+      "area": "Génie mécanique, Mineure en calcul mathématique",
+      "gpa": "3.7",
+      "startDate": "2024-01-20",
+      "endDate": "Actuellement"
+    }
+  ],
+  "work": [],
+  "skills": [
+    {
+      "name": "Logiciels de CAO",
+      "keywords": [
+        "OnShape",
+        "Inventor",
+        "Fusion360"
+      ]
+    },
+    {
+      "name": "Simulation et analyse",
+      "keywords": [
+        "ANSYS",
+        "OpenRocket",
+        "Rocksim"
+      ]
+    },
+    {
+      "name": "Programmation et outils",
+      "keywords": [
+        "Python (usage scientifique)",
+        "C++",
+        "Arduino",
+        "MATLAB",
+        "Git"
+      ]
+    },
+    {
+      "name": "Langues",
+      "keywords": [
+        "Espagnol (natif)",
+        "Anglais (B2)",
+        "Français (B1)"
+      ]
+    },
+    {
+      "name": "Travail en équipe",
+      "keywords": [
+        "Coordination", 
+        "Initiatives étudiantes"
+      ]
+    },
+    {
+      "name": "Compétences interpersonnelles",
+      "keywords": [
+        "Résolution de problèmes",
+        "Adaptabilité",
+        "Communication"
+      ]
+    },
+    {
+      "name": "Aérospatial et astronautique",
+      "keywords": [
+        "Fusées-sondes",
+        "Propulsion ionique"
+      ]
+    },
+    {
+      "name": "Recherche et développement",
+      "keywords": [
+        "Analyse bibliographique",
+        "Développement de prototypes"
+      ]
+    },
+    {
+      "name": "Documentation",
+      "keywords": [
+        "LaTeX",
+        "Markdown",
+        "Rédaction technique"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Club de robotique et makerspace au lycée",
+      "description": "Responsable du club de robotique (10e–11e années) et cofondateur d'un makerspace au Colegio San Carlos, équipé d'une imprimante 3D et d'outils pour encourager l'innovation étudiante.",
+      "url": "",
+      "keywords": [
+        "Robotique",
+        "Leadership",
+        "Makerspace",
+        "Éducation"
+      ]
+    },
+    {
+      "name": "Projet de recherche sur la propulsion ionique",
+      "description": "Participation au développement initial d’un projet de recherche en propulsion ionique à l’Université des Andes. Impliqué dans la conception et la revue de la littérature début 2024.",
+      "url": "",
+      "keywords": [
+        "Propulsion ionique",
+        "Recherche spatiale",
+        "Propulsion"
+      ]
+    },
+    {
+      "name": "Développement de fusée-sonde – SpaceTech Cohetería",
+      "description": "Participation au développement d’une fusée-sonde renforcée en fibre de carbone dans le cadre de l’initiative SpaceTech de l’Université des Andes. Responsable de l’intégration mécanique et des composants structurels.",
+      "url": "",
+      "keywords": [
+        "Astronautique",
+        "Fibre de carbone",
+        "Génie mécanique",
+        "Aérospatial"
+      ]
+    }
+  ],
+  "awards": [
+    {
+      "title": "Participation – OLAA 2020 (Olympiade latino-américaine d'astronomie)",
+      "date": "2020-10-01",
+      "awarder": "Comité OLAA",
+      "summary": "Représenté la Colombie lors de l'Olympiade latino-américaine d'astronomie."
+    },
+    {
+      "title": "Participation – IOAA 2022 (Olympiade internationale d'astronomie et d'astrophysique)",
+      "date": "2022-08-15",
+      "awarder": "Comité IOAA",
+      "summary": "Représenté la Colombie à l'événement international à Koutaïssi, Géorgie."
+    },
+    {
+      "title": "Bourse d’excellence académique – Banco de la República",
+      "date": "2023-12-15",
+      "awarder": "Banco de la República",
+      "summary": "Récompensé pour l’un des meilleurs scores nationaux à l’examen Saber 11 en 2023."
+    }
+  ],
+  "sections": [
+    "templates",
+    "profile",
+    "education",
+    "work",
+    "skills",
+    "projects",
+    "awards"
+  ]
+}
