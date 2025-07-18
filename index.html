@@ -9,13 +9,20 @@
 </head>
 <body>
   <div class="card">
+    <div class="top-controls">
+  <button id="mode-toggle" class="icon-button">🌙</button>
+  <button id="lang-toggle" class="icon-button">ENG</button>
+</div>
+
     <img src="assets/profile.jpg" alt="Luigi" class="profile" />
     <h1 id="typewriter">Luis Alejandro Rodríguez Arenas</h1>
-    <p class="subtitle">AKA: Luigi, LuigiToby, Luis</p>
-    <p class="subtitle">Mechanical Engineering Major | Computational Mathematics Minor</p>
+    <p class="subtitle" id="aka">AKA: Luigi, LuigiToby, Luis</p>
+    <p class="subtitle" id="major">Mechanical Engineering Major | Computational Mathematics Minor</p>
 
     <div class="bio">
-      <p>Luis Alejandro Rodríguez Arenas is an undergraduate Mechanical Engineering student at the Universidad de los Andes in Bogotá, Colombia, currently in his fifth semester, with a minor in Computational Mathematics. His academic interests include mechanical design, additive manufacturing, embedded systems, and electromechanical control, with a growing focus on aerospace applications. Luis is currently working with the university’s SpaceTech initiative, specifically in the rocketry subdivision, where he is contributing to the development of a sounding rocket prototype using carbon fiber-reinforced polymers. He is particularly interested in how engineering tools and systems can support lifestyle-driven career paths, with long-term aspirations toward working in the aerospace sector or related fields.</p>
+      <p id="bio-text">
+        Luis Alejandro Rodríguez Arenas is an undergraduate Mechanical Engineering student at the Universidad de los Andes in Bogotá, Colombia, currently in his fifth semester, with a minor in Computational Mathematics. His academic interests include mechanical design, additive manufacturing, embedded systems, and electromechanical control, with a growing focus on aerospace applications. Luis is currently working with the university’s SpaceTech initiative, specifically in the rocketry subdivision, where he is contributing to the development of a sounding rocket prototype using carbon fiber-reinforced polymers. He is particularly interested in how engineering tools and systems can support lifestyle-driven career paths, with long-term aspirations toward working in the aerospace sector or related fields.
+      </p>
     </div>
 
     <div class="links">
@@ -28,13 +35,14 @@
     </div>
 
     <div class="downloads">
-      <h2>Download CVs:</h2>
-      <a href="assets/CV_en.pdf" download>CV - English</a>
-      <a href="assets/CV_es.pdf" download>CV - Español</a>
+      <h2 id="downloads-text">Download CVs:</h2>
+      <a class="link-row" href="assets/CV_en.pdf" download><span class="link-label">[EN]</span><span class="link-text"> CV - English</span></a>
+      <a class="link-row" href="assets/CV_es.pdf" download><span class="link-label">[ES]</span><span class="link-text"> CV - Español</span></a>
+      <a class="link-row" href="assets/CV_fr.pdf" download><span class="link-label">[FR]</span><span class="link-text"> CV - Français</span></a>
     </div>
   </div>
 
-  <script>
+<script>
 const name = "Luis Alejandro Rodríguez Arenas";
 const target = document.getElementById("typewriter");
 let i = 0;
@@ -43,14 +51,78 @@ function typeWriter() {
   if (i <= name.length) {
     target.innerHTML = name.slice(0, i) + '<span class="typewriter-cursor">|</span>';
     i++;
-    setTimeout(typeWriter, 100); // Adjust speed here (ms)
+    setTimeout(typeWriter, 100);
   } else {
-    target.innerHTML = name + '<span class="typewriter-cursor">|</span>';
+    target.innerHTML = name;
   }
 }
 
 typeWriter();
 
+const translations = {
+  en: {
+    aka: "AKA: Luigi, LuigiToby, Luis",
+    major: "Mechanical Engineering Major | Computational Mathematics Minor",
+    bio: "Luis Alejandro Rodríguez Arenas is an undergraduate Mechanical Engineering student at the Universidad de los Andes in Bogotá, Colombia, currently in his fifth semester, with a minor in Computational Mathematics. His academic interests include mechanical design, additive manufacturing, embedded systems, and electromechanical control, with a growing focus on aerospace applications. Luis is currently working with the university’s SpaceTech initiative, specifically in the rocketry subdivision, where he is contributing to the development of a sounding rocket prototype using carbon fiber-reinforced polymers. He is particularly interested in how engineering tools and systems can support lifestyle-driven career paths, with long-term aspirations toward working in the aerospace sector or related fields.",
+    downloadsid: "Download CV:"
+  },
+  es: {
+    aka: "Alias: Luigi, LuigiToby, Luis",
+    major: "Estudiante de Ingeniería Mecánica | Énfasis en Matemáticas Computacionales",
+    bio: "Luis Alejandro Rodríguez Arenas es estudiante de pregrado en Ingeniería Mecánica en la Universidad de los Andes en Bogotá, Colombia, actualmente en quinto semestre, con énfasis en Matemáticas Computacionales. Sus intereses académicos incluyen diseño mecánico, manufactura aditiva, sistemas embebidos y control electromecánico, con un enfoque creciente en aplicaciones aeroespaciales. Actualmente trabaja en la iniciativa SpaceTech de la universidad, específicamente en la subdivisión de cohetería, donde contribuye al desarrollo de un prototipo de cohete sonda usando polímeros reforzados con fibra de carbono. Le interesa cómo las herramientas y sistemas de ingeniería pueden apoyar trayectorias profesionales orientadas al estilo de vida, con aspiraciones a largo plazo en el sector aeroespacial o campos relacionados.",
+    downloadsid: "Descargar CV:"
+  },
+  fr: {
+    aka: "Surnoms : Luigi, LuigiToby, Luis",
+    major: "Étudiant en génie mécanique | Mineure en mathématiques computationnelles",
+    bio: "Luis Alejandro Rodríguez Arenas est étudiant en génie mécanique à l'Université des Andes à Bogotá, Colombie, actuellement en cinquième semestre, avec une mineure en mathématiques computationnelles. Ses intérêts académiques incluent la conception mécanique, la fabrication additive, les systèmes embarqués et le contrôle électromécanique, avec un intérêt croissant pour les applications aérospatiales. Il travaille actuellement avec l’initiative SpaceTech de l’université, notamment dans la subdivision fuséonautique, où il contribue au développement d’un prototype de fusée-sonde utilisant des polymères renforcés de fibres de carbone. Il s'intéresse particulièrement à la façon dont les outils et systèmes d'ingénierie peuvent soutenir des parcours professionnels axés sur le mode de vie, avec des aspirations à long terme dans le secteur aérospatial ou des domaines connexes.",
+    downloadsid: "Télécharger CV:"
+  }
+};
+
+function setLang(lang) {
+  document.getElementById("aka").textContent = translations[lang].aka;
+  document.getElementById("major").textContent = translations[lang].major;
+  document.getElementById("bio-text").textContent = translations[lang].bio;
+  document.getElementById("downloads-text").textContent = translations[lang].downloadsid;
+}
+
+const langToggle = document.getElementById('lang-toggle');
+const languages = ['en', 'es', 'fr'];
+let currentLangIndex = 0;
+
+langToggle.addEventListener('click', () => {
+  currentLangIndex = (currentLangIndex + 1) % languages.length;
+  const newLang = languages[currentLangIndex];
+  langToggle.textContent = newLang.toUpperCase();
+  setLang(newLang);
+});
+
+// Establece idioma por defecto al cargar
+setLang(languages[currentLangIndex]);
+langToggle.textContent = languages[currentLangIndex].toUpperCase();
+
+const modeToggle = document.getElementById('mode-toggle');
+const body = document.body;
+
+// Load mode from localStorage if you want persistence
+if (localStorage.getItem('mode') === 'light') {
+  body.classList.add('light-mode');
+  modeToggle.textContent = '☀️';
+} else {
+  modeToggle.textContent = '🌙';
+}
+
+modeToggle.addEventListener('click', () => {
+  body.classList.toggle('light-mode');
+  if (body.classList.contains('light-mode')) {
+    modeToggle.textContent = '☀️';
+    localStorage.setItem('mode', 'light');
+  } else {
+    modeToggle.textContent = '🌙';
+    localStorage.setItem('mode', 'dark');
+  }
+});
 </script>
 </body>
 </html>

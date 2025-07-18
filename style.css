@@ -119,4 +119,67 @@ h1 {
   animation: blink 1s steps(1) infinite;
 }
 
+.top-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.icon-button {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.3rem;
+  font-family: monospace;
+  cursor: pointer;
+  padding: 0.3rem 0.6rem;
+  transition: color 0.2s ease;
+}
+
+.icon-button:hover {
+  color: #ccc;
+}
+
+/* Light mode styles */
+body.light-mode {
+  background-color: #fff;
+  color: #111;
+}
+
+body.light-mode .card {
+  background-color: #fff;
+  color: #111;
+  border: 1px solid #111;
+}
+
+body.light-mode .profile {
+  border: 2px solid #111;
+}
+
+body.light-mode .subtitle,
+body.light-mode .bio,
+body.light-mode .link-row,
+body.light-mode .downloads a {
+  color: #222;
+}
+
+body.light-mode .link-row:hover,
+body.light-mode .downloads a:hover {
+  background-color: #eee;
+}
+
+body.light-mode .typewriter-cursor {
+  color: #111;
+}
+
+body.light-mode .icon-button {
+  color: #111;
+}
+
+body.light-mode .icon-button:hover {
+  color: #555;
+}
+
+
+
 
