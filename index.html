@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" href="assets/profile.jpg" type="image/x-icon">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Luis Alejandro Rodríguez Arenas bio</title>
+  <title>Luis' website</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -19,11 +20,25 @@
     <p class="subtitle" id="aka">AKA: Luigi, LuigiToby, Luis</p>
     <p class="subtitle" id="major">Mechanical Engineering Major | Computational Mathematics Minor</p>
 
-    <div class="bio">
-      <p id="bio-text">
-        Luis Alejandro Rodríguez Arenas is an undergraduate Mechanical Engineering student at the Universidad de los Andes in Bogotá, Colombia, currently in his fifth semester, with a minor in Computational Mathematics. His academic interests include mechanical design, additive manufacturing, embedded systems, and electromechanical control, with a growing focus on aerospace applications. Luis is currently working with the university’s SpaceTech initiative, specifically in the rocketry subdivision, where he is contributing to the development of a sounding rocket prototype using carbon fiber-reinforced polymers. He is particularly interested in how engineering tools and systems can support lifestyle-driven career paths, with long-term aspirations toward working in the aerospace sector or related fields.
-      </p>
-    </div>
+      <div class="bio">
+        <div id="bio-text">Loading bio...</div>
+      </div>
+
+      <!-- Load Markdown parser + fetch bio -->
+      <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+      <script>
+        fetch('assets/bio.md')
+          .then(response => response.text())
+          .then(text => {
+            document.getElementById('bio-text').innerHTML = marked.parse(text);
+          })
+          .catch(err => {
+            console.error('Error loading bio:', err);
+            document.getElementById('bio-text').innerText = "Failed to load bio.";
+          });
+      </script>
+
+
 
     <div class="downloads">
       <h2 id="downloads-text">Download CVs:</h2>
@@ -67,28 +82,40 @@ const translations = {
   en: {
     aka: "AKA: Luigi, LuigiToby, Luis",
     major: "Mechanical Engineering Major | Computational Mathematics Minor",
-    bio: "Luis Alejandro Rodríguez Arenas is an undergraduate Mechanical Engineering student at the Universidad de los Andes in Bogotá, Colombia, currently in his fifth semester, with a minor in Computational Mathematics. His academic interests include mechanical design, additive manufacturing, embedded systems, and electromechanical control, with a growing focus on aerospace applications. Luis is currently working with the university’s SpaceTech initiative, specifically in the rocketry subdivision, where he is contributing to the development of a sounding rocket prototype using carbon fiber-reinforced polymers. He is particularly interested in how engineering tools and systems can support lifestyle-driven career paths, with long-term aspirations toward working in the aerospace sector or related fields.",
+    bioFile: "assets/bio.en.md",
     downloadsid: "Download CV:"
   },
   es: {
     aka: "Alias: Luigi, LuigiToby, Luis",
     major: "Estudiante de Ingeniería Mecánica | Énfasis en Matemáticas Computacionales",
-    bio: "Luis Alejandro Rodríguez Arenas es estudiante de pregrado en Ingeniería Mecánica en la Universidad de los Andes en Bogotá, Colombia, actualmente en quinto semestre, con énfasis en Matemáticas Computacionales. Sus intereses académicos incluyen diseño mecánico, manufactura aditiva, sistemas embebidos y control electromecánico, con un enfoque creciente en aplicaciones aeroespaciales. Actualmente trabaja en la iniciativa SpaceTech de la universidad, específicamente en la subdivisión de cohetería, donde contribuye al desarrollo de un prototipo de cohete sonda usando polímeros reforzados con fibra de carbono. Le interesa cómo las herramientas y sistemas de ingeniería pueden apoyar trayectorias profesionales orientadas al estilo de vida, con aspiraciones a largo plazo en el sector aeroespacial o campos relacionados.",
+    bioFile: "assets/bio.es.md",
     downloadsid: "Descargar CV:"
   },
   fr: {
     aka: "Surnoms : Luigi, LuigiToby, Luis",
     major: "Étudiant en génie mécanique | Mineure en mathématiques computationnelles",
-    bio: "Luis Alejandro Rodríguez Arenas est étudiant en génie mécanique à l'Université des Andes à Bogotá, Colombie, actuellement en cinquième semestre, avec une mineure en mathématiques computationnelles. Ses intérêts académiques incluent la conception mécanique, la fabrication additive, les systèmes embarqués et le contrôle électromécanique, avec un intérêt croissant pour les applications aérospatiales. Il travaille actuellement avec l’initiative SpaceTech de l’université, notamment dans la subdivision fuséonautique, où il contribue au développement d’un prototype de fusée-sonde utilisant des polymères renforcés de fibres de carbone. Il s'intéresse particulièrement à la façon dont les outils et systèmes d'ingénierie peuvent soutenir des parcours professionnels axés sur le mode de vie, avec des aspirations à long terme dans le secteur aérospatial ou des domaines connexes.",
+    bioFile: "assets/bio.fr.md",
     downloadsid: "Télécharger CV:"
   }
 };
 
-function setLang(lang) {
-  document.getElementById("aka").textContent = translations[lang].aka;
-  document.getElementById("major").textContent = translations[lang].major;
-  document.getElementById("bio-text").textContent = translations[lang].bio;
-  document.getElementById("downloads-text").textContent = translations[lang].downloadsid;
+function loadTranslation(lang) {
+  const t = translations[lang];
+
+  document.getElementById('aka').innerText = t.aka;
+  document.getElementById('major').innerText = t.major;
+  document.getElementById('downloads-text').innerText = t.downloadsid;
+
+  // Fetch the bio markdown
+  fetch(t.bioFile)
+    .then(response => response.text())
+    .then(text => {
+      document.getElementById('bio-text').innerHTML = marked.parse(text);
+    })
+    .catch(err => {
+      console.error('Error loading bio:', err);
+      document.getElementById('bio-text').innerText = "Failed to load bio.";
+    });
 }
 
 const langToggle = document.getElementById('lang-toggle');
@@ -99,11 +126,11 @@ langToggle.addEventListener('click', () => {
   currentLangIndex = (currentLangIndex + 1) % languages.length;
   const newLang = languages[currentLangIndex];
   langToggle.textContent = newLang.toUpperCase();
-  setLang(newLang);
+  loadTranslation(newLang);
 });
 
-// Establece idioma por defecto al cargar
-setLang(languages[currentLangIndex]);
+// Set default language on load
+loadTranslation(languages[currentLangIndex]);
 langToggle.textContent = languages[currentLangIndex].toUpperCase();
 
 const modeToggle = document.getElementById('mode-toggle');
@@ -128,5 +155,6 @@ modeToggle.addEventListener('click', () => {
   }
 });
 </script>
+
 </body>
 </html>
