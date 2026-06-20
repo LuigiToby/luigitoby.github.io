@@ -61,48 +61,39 @@
           <span class="section-label" id="cv-label">CV</span>
           <div class="cv-cards">
 
-            <div class="cv-card" data-cv="academic" role="link" tabindex="0">
-
+            <div class="cv-card" data-cv="academic">
               <div class="cv-card-head">
-
-                <div class="cv-card-title">
-                  <span id="cv-academic">Open Academic CV</span>
-                  <span class="cv-card-arrow" aria-hidden="true">↗</span>
-                </div>
-
+                <span class="cv-card-title" id="cv-academic">Academic</span>
                 <div class="seg" data-active="en" role="group" aria-label="Academic CV language">
                   <span class="seg-thumb" aria-hidden="true"></span>
                   <button type="button" class="seg-btn" data-lang="en" aria-pressed="true">EN</button>
                   <button type="button" class="seg-btn" data-lang="es" aria-pressed="false">ES</button>
                   <button type="button" class="seg-btn" data-lang="fr" aria-pressed="false">FR</button>
                 </div>
-
               </div>
-
+              <a class="cv-open" href="cv/output/academic_en.pdf" download data-cv-link="academic">
+                <span class="cv-open-label">Open PDF</span>
+                <span class="cv-open-arrow" aria-hidden="true">↗</span>
+              </a>
             </div>
 
-
-
-            <div class="cv-card" data-cv="corporate" role="link" tabindex="0">
-
+            <div class="cv-card" data-cv="corporate">
               <div class="cv-card-head">
-
-                <div class="cv-card-title">
-                  <span id="cv-corporate">Open Corporate CV</span>
-                  <span class="cv-card-arrow" aria-hidden="true">↗</span>
-                </div>
-
+                <span class="cv-card-title" id="cv-corporate">Corporate</span>
                 <div class="seg" data-active="en" role="group" aria-label="Corporate CV language">
                   <span class="seg-thumb" aria-hidden="true"></span>
                   <button type="button" class="seg-btn" data-lang="en" aria-pressed="true">EN</button>
                   <button type="button" class="seg-btn" data-lang="es" aria-pressed="false">ES</button>
                   <button type="button" class="seg-btn" data-lang="fr" aria-pressed="false">FR</button>
                 </div>
-
               </div>
-
+              <a class="cv-open" href="cv/output/corporate_en.pdf" download data-cv-link="corporate">
+                <span class="cv-open-label">Open PDF</span>
+                <span class="cv-open-arrow" aria-hidden="true">↗</span>
+              </a>
             </div>
 
+          </div>
         </section>
 
         <!-- Explore -->
@@ -196,8 +187,8 @@ document.addEventListener('DOMContentLoaded', () => {
       bioLabel:            'About',
       bioFile:             'assets/bio.en.md',
       cvLabel:             'CV',
-      cvOpenAcademic:      'Open Academic CV',
-      cvOpenCorporate:     'Open Corporate CV',
+      cvAcademic:          'Academic',
+      cvCorporate:         'Corporate',
       exploreLabel:        'Explore',
       exploreProjects:     'Projects',
       exploreProjectsDesc: 'Things I build',
@@ -211,8 +202,8 @@ document.addEventListener('DOMContentLoaded', () => {
       bioLabel:            'Sobre mí',
       bioFile:             'assets/bio.es.md',
       cvLabel:             'CV',
-      cvOpenAcademic:      'Abrir CV Académico',
-      cvOpenCorporate:     'Abrir CV Corporativo',
+      cvAcademic:          'Académico',
+      cvCorporate:         'Corporativo',
       exploreLabel:        'Explorar',
       exploreProjects:     'Proyectos',
       exploreProjectsDesc: 'Lo que construyo',
@@ -226,8 +217,8 @@ document.addEventListener('DOMContentLoaded', () => {
       bioLabel:            'À propos',
       bioFile:             'assets/bio.fr.md',
       cvLabel:             'CV',
-      cvOpenAcademic:      'Ouvrir le CV Académique',
-      cvOpenCorporate:     'Ouvrir le CV Entreprise',
+      cvAcademic:          'Académique',
+      cvCorporate:         'Entreprise',
       exploreLabel:        'Explorer',
       exploreProjects:     'Projets',
       exploreProjectsDesc: 'Ce que je construis',
@@ -238,14 +229,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // ── CV cards ─────────────────────────────────────────────────
-  // Each card IS the action — clicking or pressing Enter/Space
-  // anywhere on it (outside the segmented control) opens the PDF
-  // for whichever language is currently selected. The segmented
-  // control is a nested, independent control: clicks inside it
-  // are caught and stopped before they reach the card's handler.
-  // Site-wide language changes reset both cards' selected PDF
-  // language back to that language (their default), per spec.
+  // ── CV segmented controls ───────────────────────────────────
+  // Each CV card (academic / corporate) tracks its own selected
+  // PDF language. The segmented control inside a card lets the
+  // visitor override that selection independently of the other
+  // card. Switching the site-wide language resets both cards
+  // back to that language (their default), per spec.
+  const CV_OPEN_LABEL = {
+    en: 'Open PDF',
+    es: 'Abrir PDF',
+    fr: 'Ouvrir le PDF',
+  };
+
   const cvCards = document.querySelectorAll('.cv-card');
 
   function setCardLang(cardEl, lang) {
@@ -257,37 +252,14 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.setAttribute('aria-pressed', btn.dataset.lang === lang ? 'true' : 'false');
     });
 
-    cardEl.dataset.href = `cv/output/${type}_${lang}.pdf`;
-  }
-
-  function openCard(cardEl) {
-    const a = document.createElement('a');
-    a.href = cardEl.dataset.href;
-    a.download = '';
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
+    const link = cardEl.querySelector('.cv-open');
+    link.href = `cv/output/${type}_${lang}.pdf`;
+    link.querySelector('.cv-open-label').textContent = CV_OPEN_LABEL[lang];
   }
 
   cvCards.forEach(card => {
     card.querySelectorAll('.seg-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        setCardLang(card, btn.dataset.lang);
-      });
-    });
-
-    card.addEventListener('click', (e) => {
-      if (e.target.closest('.seg')) return;
-      openCard(card);
-    });
-
-    card.addEventListener('keydown', (e) => {
-      if (e.target.closest('.seg')) return;
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        openCard(card);
-      }
+      btn.addEventListener('click', () => setCardLang(card, btn.dataset.lang));
     });
   });
 
@@ -303,8 +275,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('major').textContent                = t.major;
     document.getElementById('bio-label').textContent            = t.bioLabel;
     document.getElementById('cv-label').textContent             = t.cvLabel;
-    document.getElementById('cv-academic').textContent          = t.cvOpenAcademic;
-    document.getElementById('cv-corporate').textContent         = t.cvOpenCorporate;
+    document.getElementById('cv-academic').textContent          = t.cvAcademic;
+    document.getElementById('cv-corporate').textContent         = t.cvCorporate;
     document.getElementById('explore-label').textContent        = t.exploreLabel;
     document.getElementById('explore-projects').textContent     = t.exploreProjects;
     document.getElementById('explore-projects-desc').textContent = t.exploreProjectsDesc;
@@ -314,8 +286,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('links-email').textContent          = t.linksEmail;
 
     syncCvLang(lang);
-    document.querySelector('.cv-card[data-cv="academic"]').setAttribute('aria-label', t.cvOpenAcademic);
-    document.querySelector('.cv-card[data-cv="corporate"]').setAttribute('aria-label', t.cvOpenCorporate);
 
     const bioEl = document.getElementById('bio-text');
     bioEl.textContent = '…';
