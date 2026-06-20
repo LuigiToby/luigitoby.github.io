@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Reading Challenge 2026 — Luis AR" />
+  <link rel="icon" href="../../assets/profile.jpg" type="image/x-icon">
+  <title>Reading Challenge 2026 — Luis AR</title>
+  <link rel="stylesheet" href="../../style.css" />
+</head>
+<body>
+
+<div class="site">
+
+  <!-- ─── Header ─── -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../../" class="header-name">Luis AR</a>
+      <nav class="header-nav">
+        <a href="../../projects/" class="nav-link">projects</a>
+        <a href="../" class="nav-link active">playground</a>
+      </nav>
+      <div class="header-controls">
+        <button id="mode-toggle" class="ctrl-btn" aria-label="Toggle theme">○</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ─── Main ─── -->
+  <main class="page-content">
+
+    <a href="../" class="page-back">← Playground</a>
+
+    <!-- Item header -->
+    <div class="article-header">
+      <h1 class="page-title">Reading Challenge 2026</h1>
+      <div class="article-meta">
+        <div class="meta-item">
+          <span class="meta-key">Type</span>
+          <span class="meta-val">Reading</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-key">Status</span>
+          <span class="meta-val">Active</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-key">Target</span>
+          <span class="meta-val">26 books</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-key">Period</span>
+          <span class="meta-val">Jan – Dec 2026</span>
+        </div>
+      </div>
+    </div>
+
+    <hr class="rule">
+
+    <!-- Body content -->
+    <div class="article-body">
+
+      <p>
+        Write your exploration here. This template works for anything in the Playground:
+        reading lists, photography notes, game logs, personal challenges, systems documentation.
+      </p>
+
+      <h2>Approach</h2>
+      <p>
+        Describe how you structure this exploration. What are the rules, constraints,
+        or framework you set for yourself?
+      </p>
+
+      <h2>Log</h2>
+      <p>
+        Document entries over time. Each section, note, or book can be its own H3.
+      </p>
+
+      <h3>Book 01 — Title Author</h3>
+      <p>Brief reflection on what you read or experienced.</p>
+
+      <h3>Book 02 — Title Author</h3>
+      <p>Brief reflection.</p>
+
+      <!-- Example of a quoted passage -->
+      <!--
+      <blockquote>
+        A relevant excerpt that stayed with you.
+      </blockquote>
+      -->
+
+    </div>
+
+  </main>
+
+  <!-- ─── Footer ─── -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="footer-text">Luis Alejandro Rodríguez Arenas</span>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const modeBtn = document.getElementById('mode-toggle');
+  function applyTheme(isLight) {
+    document.body.classList.toggle('light-mode', isLight);
+    modeBtn.textContent = isLight ? '●' : '○';
+  }
+  applyTheme(localStorage.getItem('mode') === 'light');
+  modeBtn.addEventListener('click', () => {
+    const isLight = !document.body.classList.contains('light-mode');
+    applyTheme(isLight);
+    localStorage.setItem('mode', isLight ? 'light' : 'dark');
+  });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,139 @@
+% ==================================================
+% REUSABLE CV COMPONENTS
+% ==================================================
+
+% --------------------------------------------------
+% Header
+% --------------------------------------------------
+
+\newcommand{\makeheader}{
+
+{\fontsize{20}{22}\selectfont\bfseries \FullName}
+
+{\small
+\Location \;|\;
+\Phone \;|\;
+\AcademicEmail \;|\;
+\Website \;|\;
+\LinkedIn \;|\;
+\Github
+% \ORCID
+}
+
+\vspace{0.4em}
+
+%\hrule
+
+%\vspace{0.4em}
+}
+
+% --------------------------------------------------
+% Section
+% --------------------------------------------------
+
+\newcommand{\cvsection}[1]{
+\section*{#1}
+\sectionrule
+}
+
+% --------------------------------------------------
+% Generic Entry
+% --------------------------------------------------
+%
+% #1 Institution / Organization / Project
+% #2 Role / Degree / Position
+% #3 Location
+% #4 Date Range
+%
+% Example:
+%
+% \cventry
+%     {Universidad de los Andes}
+%     {BS Mechanical Engineering}
+%     {Bogotá, Colombia}
+%     {2024 -- Present}
+%
+
+\newcommand{\cvedu}[3]{
+\textbf{#1}
+\hfill
+{\small #3}
+
+\par
+
+#2
+
+\vspace{0.4em}
+}
+
+% --------------------------------------------------
+% Skill Group
+% --------------------------------------------------
+%
+% Example:
+%
+% \cvskillgroup
+%     {Programming}
+%     {Python, C++, MATLAB}
+%
+
+\newcommand{\cvskill}[2]{
+\noindent
+\textbf{\makebox[1.7in][l]{#1}}
+#2
+\par
+}
+
+% --------------------------------------------------
+% Compact Item List
+% --------------------------------------------------
+
+\newenvironment{cvitems}
+{
+\begin{itemize}
+}
+{
+\end{itemize}
+}
+
+% \cvproject
+% \cvleadership
+
+\newcommand{\cvaward}[3]{
+
+\textbf{#1}
+\hfill
+{\small #2}
+
+\par
+
+#3
+
+\vspace{0.4em}
+
+}
+
+
+\newcommand{\cvproject}[3]{
+\noindent
+{\small #2}
+\hspace{1em}
+\textbf{#1}
+\par
+#3
+\vspace{0.6em}
+}   
+
+\newcommand{\cvexperience}[3]{
+
+\textbf{#1}
+\hfill
+{\small #2}
+
+\par
+
+#3
+
+\vspace{0.4em}
+
+}

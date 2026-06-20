@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" href="assets/profile.jpg" type="image/x-icon">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Luis Alejandro Rodríguez Arenas - Mechanical Engineering Major, Computational Mathematics Minor. Personal website, CVs, and links." />
+  <title>Luis' website</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="card">
+    <div class="top-controls">
+      <button id="mode-toggle" class="icon-button">🌙</button>
+      <button id="lang-toggle" class="icon-button">ENG</button>
+    </div>
+
+    <img src="assets/profile.jpg" alt="Luigi" class="profile" />
+    <h1 id="typewriter">Luis Alejandro Rodríguez Arenas</h1>
+    <p class="subtitle" id="aka">AKA: Luigi, LuigiToby, Luis</p>
+    <p class="subtitle" id="major">Mechanical Engineering Major | Computational Mathematics Minor</p>
+
+    <div class="bio">
+      <div id="bio-text">Loading bio...</div>
+    </div>
+
+    <!-- Load Markdown parser -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <div class="downloads">
+      <h2 id="downloads-text">Download CVs:</h2>
+      <a class="link-row" href="assets/CV/CV_EN.pdf" download><span class="link-label">[EN]</span><span class="link-text"> CV - English</span></a>
+      <a class="link-row" href="assets/CV/CV_ES.pdf" download><span class="link-label">[ES]</span><span class="link-text"> CV - Español</span></a>
+      <a class="link-row" href="assets/CV/CV_FR.pdf" download><span class="link-label">[FR]</span><span class="link-text"> CV - Français</span></a>
+    </div>
+    
+    <div class="links">
+      <h2>Links:</h2>
+      <a class="link-row" href="https://www.linkedin.com/in/luisarodriguezarenas/" target="_blank"><span class="link-label">[LI]</span><span class="link-text">LinkedIn</span></a>
+      <a class="link-row" href="https://www.youtube.com/@LuigiToby" target="_blank"><span class="link-label">[YT]</span><span class="link-text">YouTube</span></a>
+      <a class="link-row" href="https://vsco.co/luigitoby/gallery" target="_blank"><span class="link-label">[VSCO]</span><span class="link-text">VSCO</span></a>
+      <a class="link-row" href="https://github.com/luigitoby" target="_blank"><span class="link-label">[GH]</span><span class="link-text">GitHub</span></a>
+      <a class="link-row" href="mailto:alejandro.rodriguez3386@gmail.com"><span class="link-label">[MAIL]</span><span class="link-text">Email</span></a>
+    </div>
+  </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const name = "Luis Alejandro Rodríguez Arenas";
+  const target = document.getElementById("typewriter");
+  let i = 0;
+
+  function typeWriter() {
+    if (i <= name.length) {
+      target.innerHTML = name.slice(0, i) + '<span class="typewriter-cursor">|</span>';
+      i++;
+      setTimeout(typeWriter, 100);
+    } else {
+      target.innerHTML = name;
+    }
+  }
+  typeWriter();
+
+  const translations = {
+    en: {
+      aka: "AKA: Luigi, LuigiToby, Luis",
+      major: "Mechanical Engineering Major | Computational Mathematics Minor",
+      bioFile: "assets/bio.en.md",
+      downloadsid: "Download CVs:"
+    },
+    es: {
+      aka: "Alias: Luigi, LuigiToby, Luis",
+      major: "Estudiante de Ingeniería Mecánica | Énfasis en Matemáticas Computacionales",
+      bioFile: "assets/bio.es.md",
+      downloadsid: "Descargar CVs:"
+    },
+    fr: {
+      aka: "Surnoms : Luigi, LuigiToby, Luis",
+      major: "Étudiant en génie mécanique | Mineure en mathématiques computationnelles",
+      bioFile: "assets/bio.fr.md",
+      downloadsid: "Télécharger CVs:"
+    }
+  };
+
+  function loadTranslation(lang) {
+    const t = translations[lang];
+    document.getElementById('aka').innerText = t.aka;
+    document.getElementById('major').innerText = t.major;
+    document.getElementById('downloads-text').innerText = t.downloadsid;
+
+    // Fetch the bio markdown
+    fetch(t.bioFile)
+      .then(response => response.text())
+      .then(text => {
+        document.getElementById('bio-text').innerHTML = marked.parse(text);
+      })
+      .catch(err => {
+        console.error('Error loading bio:', err);
+        document.getElementById('bio-text').innerText = "Failed to load bio.";
+      });
+  }
+
+  const langToggle = document.getElementById('lang-toggle');
+  const languages = ['en', 'es', 'fr'];
+  let currentLangIndex = 0;
+
+  langToggle.addEventListener('click', () => {
+    currentLangIndex = (currentLangIndex + 1) % languages.length;
+    const newLang = languages[currentLangIndex];
+    langToggle.textContent = newLang.toUpperCase();
+    loadTranslation(newLang);
+  });
+
+  // Set default language on load
+  loadTranslation(languages[currentLangIndex]);
+  langToggle.textContent = languages[currentLangIndex].toUpperCase();
+
+  const modeToggle = document.getElementById('mode-toggle');
+  const body = document.body;
+
+  // Load mode from localStorage if you want persistence
+  if (localStorage.getItem('mode') === 'light') {
+    body.classList.add('light-mode');
+    modeToggle.textContent = '☀️';
+  } else {
+    modeToggle.textContent = '🌙';
+  }
+
+  modeToggle.addEventListener('click', () => {
+    body.classList.toggle('light-mode');
+    if (body.classList.contains('light-mode')) {
+      modeToggle.textContent = '☀️';
+      localStorage.setItem('mode', 'light');
+    } else {
+      modeToggle.textContent = '🌙';
+      localStorage.setItem('mode', 'dark');
+    }
+  });
+});
+</script>
+
+</body>
+</html>

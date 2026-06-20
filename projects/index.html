@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Projects — Luis Alejandro Rodríguez Arenas" />
+  <link rel="icon" href="../assets/profile.jpg" type="image/x-icon">
+  <title>Projects — Luis AR</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+
+<div class="site">
+
+  <!-- ─── Header ─── -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../" class="header-name">Luis AR</a>
+      <nav class="header-nav">
+        <a href="./" class="nav-link active">projects</a>
+        <a href="../playground/" class="nav-link">playground</a>
+      </nav>
+      <div class="header-controls">
+        <button id="mode-toggle" class="ctrl-btn" aria-label="Toggle theme">○</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ─── Main ─── -->
+  <main class="page-content">
+
+    <div class="index-header">
+      <h1 class="page-title">Projects</h1>
+      <p class="page-desc">Things I build and build upon.</p>
+    </div>
+
+    <div class="item-list">
+
+      <!--
+        To add a project:
+        1. Create a folder: projects/project-slug/
+        2. Add index.html using the template in projects/cccd2026/index.html
+        3. Copy an item-entry block below and update the href, title, desc, and meta.
+      -->
+
+      <a class="item-entry" href="cccd2026/">
+        <div>
+          <div class="item-title">CCCD2026 Rocketry Program</div>
+          <div class="item-desc">High-powered rocketry development competing in the Colombian Collegiate Challenge. Propulsion, structures, avionics.</div>
+        </div>
+        <div class="item-meta">2025–</div>
+      </a>
+
+      <a class="item-entry" href="cansat/">
+        <div>
+          <div class="item-title">CanSat World Championship</div>
+          <div class="item-desc">Miniaturized satellite design for atmospheric re-entry mission simulation. International competition, team lead.</div>
+        </div>
+        <div class="item-meta">2024</div>
+      </a>
+
+      <a class="item-entry" href="rocketry/">
+        <div>
+          <div class="item-title">Experimental Rocketry Program</div>
+          <div class="item-desc">Internal research program for solid and hybrid propulsion. Motor characterization, static fire testing.</div>
+        </div>
+        <div class="item-meta">2023–</div>
+      </a>
+
+      <a class="item-entry" href="ion-thruster/">
+        <div>
+          <div class="item-title">Ion Thruster Research</div>
+          <div class="item-desc">Research into gridded electrostatic propulsion for CubeSat-scale spacecraft. Plasma simulation and experimental validation.</div>
+        </div>
+        <div class="item-meta">2024</div>
+      </a>
+
+    </div>
+
+  </main>
+
+  <!-- ─── Footer ─── -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="footer-text">Luis Alejandro Rodríguez Arenas</span>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const modeBtn = document.getElementById('mode-toggle');
+  function applyTheme(isLight) {
+    document.body.classList.toggle('light-mode', isLight);
+    modeBtn.textContent = isLight ? '●' : '○';
+  }
+  applyTheme(localStorage.getItem('mode') === 'light');
+  modeBtn.addEventListener('click', () => {
+    const isLight = !document.body.classList.contains('light-mode');
+    applyTheme(isLight);
+    localStorage.setItem('mode', isLight ? 'light' : 'dark');
+  });
+});
+</script>
+
+</body>
+</html>
