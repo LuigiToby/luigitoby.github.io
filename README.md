@@ -89,6 +89,7 @@ corporate_fr.pdf
 * [x] Finish Projects section
 * [x] Finish Playground section
 * [ ] My grilfriend says playground is not the right name for that section... maybe re-think that
+* [ ] Add new domain (Well actually buy it lol)
 * [ ] Add individual project pages
 * [ ] Add individual playground pages
 * [ ] Improve CV card interactions
