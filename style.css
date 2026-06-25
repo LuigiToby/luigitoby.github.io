@@ -228,7 +228,7 @@ img { display: block; max-width: 100%; }
    Projects, Playground, Links, read as a control panel. ─────── */
 .home-grid {
   display: grid;
-  grid-template-columns: 2fr 2fr;
+  grid-template-columns: 2fr 1.8fr;
   gap: var(--s-64);
   align-items: start;
 }
