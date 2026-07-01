@@ -1,0 +1,70 @@
+{
+  "title": "Concurso Colombiano de Cohetería Deportiva 2025",
+  "type": "Competition",
+  "domain": "Aerospace Engineering / High-Power Rocketry",
+  "organization": "Universidad de los Andes - SpaceTech Rocketry",
+  "period": "2025-20",
+  "role": "Team Lead - Design and Integration",
+  "status": "Done",
+
+  "gallery": [
+    {
+      "id": 1,
+      "file": "assets/vehicle-cad.jpg",
+      "caption": "Full vehicle CAD assembly — preliminary design phase"
+    },
+    {
+      "id": 2,
+      "file": "assets/nosecone-cfd.jpg",
+      "caption": "CFD pressure distribution, nose cone, Mach 0.55"
+    },
+    {
+      "id": 3,
+      "file": "assets/fin-can.jpg",
+      "caption": "Fin-can structural detail, carbon fibre layup"
+    },
+    {
+      "id": 4,
+      "file": "assets/static-fire.jpg",
+      "caption": "Static fire test, motor M-001, March 2026"
+    }
+  ],
+
+  "documents": [
+    {
+      "title": "Preliminary Design Review (PDR)",
+      "file": "assets/pdr-cccd2026.pdf"
+    },
+    {
+      "title": "Critical Design Review (CDR)",
+      "file": "assets/cdr-cccd2026.pdf"
+    },
+    {
+      "title": "OpenRocket simulation file",
+      "file": "assets/cccd2026.ork"
+    }
+  ],
+
+  "references": [
+    {
+      "id": 1,
+      "citation": "Barrowman, J. S. (1967). The Practical Calculation of the Aerodynamic Characteristics of Slender Finned Vehicles. M.Sc. Thesis, The Catholic University of America, Washington D.C."
+    },
+    {
+      "id": 2,
+      "citation": "Mandell, G. K., Caporaso, G. A., & Bengen, W. P. (1973). Topics in Advanced Model Rocketry. MIT Press."
+    },
+    {
+      "id": 3,
+      "citation": "NASA SP-8114 (1974). Solid Rocket Motor Scaling. NASA Space Vehicle Design Criteria."
+    },
+    {
+      "id": 4,
+      "citation": "Nakka, R. (2005). Solid Propellant Rocket Motor Design and Testing. Richard Nakka's Experimental Rocketry. https://www.nakka-rocketry.net/"
+    },
+    {
+      "id": 5,
+      "citation": "OpenRocket Development Team (2023). OpenRocket Technical Documentation v23.09. https://openrocket.info/"
+    }
+  ]
+}

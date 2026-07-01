@@ -83,37 +83,30 @@ corporate_fr.pdf
 * Professional and personal content clearly separated
 
 ## TODO
-,mgjjghj
 ### Website
-
 * [x] Finish Projects section
-* [x] Finish Playground section
-* [ ] My grilfriend says playground is not the right name for that section... maybe re-think that
-* [ ] Add new domain (Well actually buy it lol)
-* [ ] Add individual project pages
-* [ ] Add individual playground pages
-* [ ] Improve CV card interactions
+* [x] Finish Booshelf section
+* [x] My grilfriend says playground is not the right name for that section... maybe re-think that. Changed to Bookshelf
+* [x] Add new domain (Well actually buy it lol)
+* [x] Add individual project pages
+* [x] Add individual bookshelf pages
+* [x] Improve CV card interactions
 * [x] Refine typography
 * [x] Improve mobile layout
-* [ ] Add project thumbnails
-
+* [-] Add project thumbnails > Discarted because it's not KISS
 ### CV
-
 * [ ] Complete corporate profile, rn is a copy of academy
-* [ ] Add project hyperlinks
-* [ ] Add publication support
-* [ ] Review French translations
-* [ ] Review Spanish translations
-
+* [ ] Add languajes hiperlinks for certifications
+* [ ] Add L1 certification an in-general document certifications to the CV via links to website
+* [ ] Add project hyperlinks > Waiting to finish project pages
+* [ ] Add publication support > No publications still
+* [x] Review French translations
+* [x] Review Spanish translations
 ### Content
-* [ ] Basically complete the project pages lol
-    * [ ] CCCD2026 project page
-    * [ ] Experimental Rocketry page
-    * [ ] CanSat page
-    * [ ] Ion Thruster page
-    * [ ] Reading Challenge page
-    * [ ] Bookshelf page
-    * [ ] Photography page
+* [ ] CCCD2026 page
+* [ ] CCCD2025 page 
+* [ ] MuldialdeCansat2026 page
+* [ ] Reading challenge 2026 page 
 
 ## License
 

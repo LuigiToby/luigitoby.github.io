@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- description and title are overwritten by project.js from metadata.json -->
+  <meta name="description" content="" />
+  <link rel="icon" href="../../assets/profile.jpg" type="image/x-icon" />
+  <title>Project</title>
+  <link rel="stylesheet" href="../../style.css" />
+  <link rel="stylesheet" href="../project.css" />
+</head>
+<body>
+
+<div class="site">
+
+  <!-- ─── Header ──────────────────────────────────────────────── -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../../" class="header-name">main</a>
+      <nav class="header-nav">
+        <a href="../" class="nav-link active">projects</a>
+        <a href="../../bookshelf/" class="nav-link">bookshelf</a>
+      </nav>
+      <div class="header-controls">
+        <button id="mode-toggle" class="ctrl-btn" aria-label="Toggle theme">○</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ─── Main ─────────────────────────────────────────────────── -->
+  <main class="page-content">
+
+    <a href="../" class="page-back">← Projects</a>
+
+    <!-- Article header — auto-populated from metadata.json by project.js -->
+    <div id="project-header" class="article-header"></div>
+
+    <hr class="rule" />
+
+    <!-- ═══════════════════════════════════════════════════════════
+         ARTICLE BODY
+         Write your content below. Rules:
+
+           • Top-level sections must use <h2> with the IDs shown.
+           • Subsections inside Engineering may use <h3> freely.
+           • Cross-reference images  →  write:  Img. 2
+           • Cross-reference sources →  write:  [3]
+             project.js will automatically turn these into links.
+           • Gallery, Documents, and References are rendered
+             automatically — do not write their content here.
+         ═══════════════════════════════════════════════════════════ -->
+    <div class="article-body">
+
+      <h2 id="overview">Overview</h2>
+      <p>
+        The Concurso Colombiano de Cohetería Deportiva (CCCD) 2026 is the continuation of SpaceTech
+        Rocketry's programme at Universidad de los Andes. Building on the lessons of the 2025 campaign
+        — particularly the ejection charge failure that prevented parachute deployment — the 2026 vehicle
+        advances the structural design, recovery system, and avionics stack while maintaining the glass
+        fibre airframe approach established last year.
+      </p>
+      <p>
+        The full vehicle configuration is shown in Img. 1. Aerodynamic simulation results, including
+        CFD pressure distribution across the nose cone at cruise Mach number, are presented in Img. 2.
+      </p>
+
+      <h2 id="objectives">Objectives</h2>
+      <p>
+        The primary objectives for CCCD 2026 are:
+      </p>
+      <ul>
+        <li>Achieve a target apogee of 3,000 m AGL with a recovery landing within 600 m of the launch site.</li>
+        <li>Demonstrate a reliable dual-event recovery system after the 2025 ejection charge failure.</li>
+        <li>Design fin geometry optimising static margin per Barrowman theory [1] while minimising drag.</li>
+        <li>Integrate a custom flight computer for real-time telemetry and redundant deployment events.</li>
+      </ul>
+
+      <h2 id="engineering">Engineering</h2>
+
+      <h3>Aerodynamics</h3>
+      <p>
+        The aerodynamic design follows the extended Barrowman equations [1] implemented in OpenRocket [5].
+        A static stability margin of 1.8 calibres was selected as the design target — stable enough for
+        reliable flight without excessive weathercocking in the prevailing winds at the competition site.
+      </p>
+      <p>
+        CFD validation was conducted on the nose cone and fin-can geometries at Mach 0.35–0.65 using
+        a structured mesh with a y+ target of 1 on the wall. The pressure distribution at Mach 0.55
+        is shown in Img. 2, confirming attached flow at the leading edge of the ogive and localised
+        separation at the fin-body junction below the design angle of attack.
+      </p>
+
+      <h3>Structures</h3>
+      <p>
+        The primary airframe is a 98 mm diameter filament-wound glass-fibre tube. Nose cone and fin
+        can are hand-laminated. The fin geometry was analysed per [2] to verify flutter safety at
+        maximum dynamic pressure. Img. 3 shows the fin-can carbon fibre layup detail.
+      </p>
+      <p>
+        Axial load cases at motor burnout and maximum-q define the structural sizing. A factor of safety
+        of 2.5 is applied to all composite members following NASA SP-8114 guidelines [3].
+      </p>
+
+      <h3>Recovery</h3>
+      <p>
+        The 2025 campaign suffered a single-point failure in the black-powder ejection charge circuit.
+        For 2026, a redundant dual-ematch recovery system is implemented, with separate charge wells
+        for drogue and main deployment. Deployment is triggered by barometric apogee detection with
+        an accelerometer-based backup, consistent with Nakka's dual-event methodology [4].
+      </p>
+
+      <h3>Avionics</h3>
+      <p>
+        The flight computer runs a custom firmware stack on an STM32 microcontroller. It logs 10-DoF
+        IMU data, barometric altitude, GPS position, and ematch continuity at 100 Hz. Real-time
+        telemetry is transmitted at 433 MHz to a ground station. All flight data is retained on
+        internal flash and on an SD card.
+      </p>
+
+      <h2 id="results">Results</h2>
+      <p>
+        The static fire test of motor M-001 was completed in March 2026 (Img. 4), validating the
+        propellant grain design and nozzle throat area. Peak thrust was within 4% of the OpenRocket
+        prediction [5]. Full flight data will be added after the competition launch window.
+      </p>
+
+      <!-- ── Auto-populated sections ──────────────────────────────
+           The h2 headings below are part of the authored structure.
+           The content divs / ol are filled by project.js at load time.
+           Do not add content inside #project-gallery, #project-documents,
+           or #project-references — it will be overwritten.            -->
+
+      <h2 id="gallery">Gallery</h2>
+      <div id="project-gallery"></div>
+
+      <h2 id="documents">Documents</h2>
+      <div id="project-documents"></div>
+
+      <h2 id="references">References</h2>
+      <ol id="project-references" class="ref-list"></ol>
+
+    </div>
+    <!-- /.article-body -->
+
+  </main>
+
+  <!-- ─── Footer ───────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="footer-text">Luis Alejandro Rodríguez Arenas</span>
+    </div>
+  </footer>
+
+</div>
+
+<!-- project.js handles theme toggle, metadata rendering, gallery,
+     documents, references, and cross-link substitution. -->
+<script src="../project.js"></script>
+
+</body>
+</html>
