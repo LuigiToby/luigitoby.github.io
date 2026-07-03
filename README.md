@@ -108,7 +108,8 @@ corporate_fr.pdf
 	* [x] Update images
 	* [x] Add support for video
 	* [x] Add the videos!
-* [ ] Reading challenge 2026 page
+* [x] Reading challenge 2026 page
+* [ ] Reading challenge 2025 page
 * [ ] [[MundialCansat2026]] page
 * [ ] [[Rocketry L1 Certification]]
 * [ ] [[ActInSpace2026 Bordeaux]] and [[ActInSpace2026 Bogotá]] page
