@@ -52,87 +52,138 @@
          ═══════════════════════════════════════════════════════════ -->
     <div class="article-body">
 
+      <h2 id="gallery">Gallery</h2>
+      <div id="project-gallery"></div>
+
       <h2 id="overview">Overview</h2>
       <p>
-        The Concurso Colombiano de Cohetería Deportiva (CCCD) 2026 is the continuation of SpaceTech
-        Rocketry's programme at Universidad de los Andes. Building on the lessons of the 2025 campaign
-        — particularly the ejection charge failure that prevented parachute deployment — the 2026 vehicle
-        advances the structural design, recovery system, and avionics stack while maintaining the glass
-        fibre airframe approach established last year.
+        P.A.T.A.C.O.N. 1 (Plataforma Avanzada de Tecnología Aeroespacial Con Objetivo
+        No-Orbital 1) was the first high-power rocket developed by the SpaceTech
+        Rocketry team at Universidad de los Andes for the Colombian Collegiate Rocketry
+        Competition (<a href="https://cccd.space/historico/mision-cccd-2025">CCCD 2025</a>). The vehicle was designed to satisfy the competition
+        requirements while establishing the engineering processes, manufacturing
+        capabilities, and design methodology that would become the foundation for future
+        vehicles.
       </p>
       <p>
-        The full vehicle configuration is shown in Img. 1. Aerodynamic simulation results, including
-        CFD pressure distribution across the nose cone at cruise Mach number, are presented in Img. 2.
+        The rocket integrated a composite airframe, custom recovery system, CanSat
+        payload, simulation-driven design workflow, and ground testing campaign. The
+        project also marked the university's return to competitive rocketry after
+        approximately six years without a student-developed launch.
       </p>
 
       <h2 id="objectives">Objectives</h2>
-      <p>
-        The primary objectives for CCCD 2026 are:
-      </p>
+
       <ul>
-        <li>Achieve a target apogee of 3,000 m AGL with a recovery landing within 600 m of the launch site.</li>
-        <li>Demonstrate a reliable dual-event recovery system after the 2025 ejection charge failure.</li>
-        <li>Design fin geometry optimising static margin per Barrowman theory [1] while minimising drag.</li>
-        <li>Integrate a custom flight computer for real-time telemetry and redundant deployment events.</li>
+      <li>Design and manufacture a university rocket capable of reaching the 400 m target apogee defined by CCCD 2025.</li>
+
+      <li>Develop and validate an engineering workflow combining simulation, CAD, composite manufacturing, testing, and flight operations.</li>
+
+      <li>Integrate a functional CanSat payload while satisfying competition mass, stability, and safety requirements.</li>
+
+      <li>Establish a reusable technological platform that would serve as the first member of the P.A.T.A.C.O.N. rocket family.</li>
       </ul>
 
       <h2 id="engineering">Engineering</h2>
 
-      <h3>Aerodynamics</h3>
+      <h3>Mission Design</h3>
       <p>
-        The aerodynamic design follows the extended Barrowman equations [1] implemented in OpenRocket [5].
-        A static stability margin of 1.8 calibres was selected as the design target — stable enough for
-        reliable flight without excessive weathercocking in the prevailing winds at the competition site.
-      </p>
-      <p>
-        CFD validation was conducted on the nose cone and fin-can geometries at Mach 0.35–0.65 using
-        a structured mesh with a y+ target of 1 on the wall. The pressure distribution at Mach 0.55
-        is shown in Img. 2, confirming attached flow at the leading edge of the ogive and localised
-        separation at the fin-body junction below the design angle of attack.
+      Vehicle requirements were derived from the CCCD 2025 competition constraints,
+      including a target apogee of 400 m, a G80-7T motor, a maximum launch mass of
+      1.2 kg, and the integration of a 250–300 g CanSat payload. These requirements
+      defined the allowable design space throughout the project.
       </p>
 
-      <h3>Structures</h3>
+      <h3>Vehicle Design</h3>
+
       <p>
-        The primary airframe is a 98 mm diameter filament-wound glass-fibre tube. Nose cone and fin
-        can are hand-laminated. The fin geometry was analysed per [2] to verify flutter safety at
-        maximum dynamic pressure. Img. 3 shows the fin-can carbon fibre layup detail.
-      </p>
-      <p>
-        Axial load cases at motor burnout and maximum-q define the structural sizing. A factor of safety
-        of 2.5 is applied to all composite members following NASA SP-8114 guidelines [3].
+      Several vehicle configurations were evaluated using iterative CAD and
+      OpenRocket models. Alternatives included variable-diameter fuselages,
+      fully composite structures, and multiple fin geometries. The selected
+      configuration adopted a constant-diameter composite airframe with
+      3D-printed nose cone and couplers, balancing aerodynamic performance,
+      manufacturability, and modularity.
       </p>
 
-      <h3>Recovery</h3>
+      <h3>Simulation</h3>
+
       <p>
-        The 2025 campaign suffered a single-point failure in the black-powder ejection charge circuit.
-        For 2026, a redundant dual-ematch recovery system is implemented, with separate charge wells
-        for drogue and main deployment. Deployment is triggered by barometric apogee detection with
-        an accelerometer-based backup, consistent with Nakka's dual-event methodology [4].
+      OpenRocket and RockSim were used throughout the design process to evaluate
+      apogee, stability margin, rail exit velocity, and recovery timing.
+      Environmental conditions at the launch site were incorporated into the
+      simulation workflow, allowing iterative optimization of vehicle geometry
+      and mass distribution before manufacturing.
       </p>
 
-      <h3>Avionics</h3>
       <p>
-        The flight computer runs a custom firmware stack on an STM32 microcontroller. It logs 10-DoF
-        IMU data, barometric altitude, GPS position, and ematch continuity at 100 Hz. Real-time
-        telemetry is transmitted at 433 MHz to a ground station. All flight data is retained on
-        internal flash and on an SD card.
+      Additional CFD analyses were conducted in ANSYS Fluent to study pressure
+      distribution and aerodynamic drag. Mesh refinement and boundary-condition
+      validation were used to improve convergence and establish a repeatable CFD
+      workflow for future projects.
       </p>
+
+      <h3>Structures & Manufacturing</h3>
+
+      <p>
+      The project included the complete development of composite manufacturing
+      processes for aerospace structures. Carbon- and glass-fibre laminates were
+      manufactured and mechanically characterized through ASTM D3039 tensile
+      testing before selecting the final structural configuration.
+      </p>
+
+      <p>
+      The primary airframe was manufactured as a glass-fibre composite tube using
+      hand layup techniques over an aluminum mandrel. Multiple manufacturing
+      approaches were evaluated before selecting the process that provided the
+      best compromise between dimensional accuracy, surface finish, and
+      repeatability.
+      </p>
+
+      <h3>Recovery System</h3>
+
+      <p>
+      Several parachute geometries were evaluated through analytical calculations. 
+      Circular and cruciform configurations were selected
+      for prototype testing based on packing volume, drag characteristics,
+      manufacturability, and wind sensitivity.
+      </p>
+
+      <h3>Payload</h3>
+
+      <p>
+      The rocket carried the S.U.E.R.O. (Sistema Universitario de Ensayo para Recursos Organicos) 
+      CanSat payload, which was integrated into the
+      nose section and designed to separate after ejection to complete both the
+      primary competition mission and secondary experimental objectives.
+      </p>
+
 
       <h2 id="results">Results</h2>
+
       <p>
-        The static fire test of motor M-001 was completed in March 2026 (Img. 4), validating the
-        propellant grain design and nozzle throat area. Peak thrust was within 4% of the OpenRocket
-        prediction [5]. Full flight data will be added after the competition launch window.
+      P.A.T.A.C.O.N. 1 completed its maiden flight during CCCD 2025 and successfully
+      validated the majority of the engineering workflow developed throughout the
+      project, including vehicle design, manufacturing, integration, and launch
+      operations. Although the mission did not satisfy all competition objectives,
+      it provided valuable flight data and established the technical foundation for
+      subsequent SpaceTech rocket developments.
       </p>
+
+      <ul>
+        <li>The recovery system did not deploy due to a motor ejection failure, preventing successful recovery and resulting in an unsuccessful competition flight.</li>
+
+        <li>The S.U.E.R.O. payload SD card was recovered, allowing partial post-flight analysis despite the loss of the vehicle.</li>
+
+        <li>Recorded flight data showed that powered ascent and the ballistic coast phase closely matched pre-flight simulations, providing confidence in the vehicle design methodology.</li>
+
+        <li>The project established the engineering processes, manufacturing techniques, and simulation workflow that became the basis for later P.A.T.A.C.O.N. vehicles.</li>
+      </ul>
 
       <!-- ── Auto-populated sections ──────────────────────────────
            The h2 headings below are part of the authored structure.
            The content divs / ol are filled by project.js at load time.
            Do not add content inside #project-gallery, #project-documents,
            or #project-references — it will be overwritten.            -->
-
-      <h2 id="gallery">Gallery</h2>
-      <div id="project-gallery"></div>
 
       <h2 id="documents">Documents</h2>
       <div id="project-documents"></div>

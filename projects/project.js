@@ -117,58 +117,118 @@ function renderHeader(meta) {
 
 /* ─── renderGallery ─────────────────────────────────────────────
    Builds a thumbnail grid and attaches a full-screen lightbox.
+   Accepts either the legacy array format or the new object form:
+     { "previewCount": 6, "items": [...] }
    Exposes window._gallery.open(index) so the cross-linker can
    trigger the lightbox from Img. N links in the article body.  */
-function renderGallery(gallery) {
+
+// File extensions used to choose <img> vs <video>.
+const VIDEO_EXT = new Set(['mp4', 'webm', 'mov', 'ogg']);
+
+function getMediaType(file) {
+  const ext = file.split('.').pop().toLowerCase();
+  return VIDEO_EXT.has(ext) ? 'video' : 'image';
+}
+
+function renderGallery(galleryData) {
   const el = document.getElementById('project-gallery');
   if (!el) return;
 
-  if (gallery.length === 0) {
-    el.innerHTML = '<p class="section-empty">No images.</p>';
+  // Support both legacy array and new {previewCount, items} formats.
+  let items, previewCount;
+  if (Array.isArray(galleryData)) {
+    items        = galleryData;
+    previewCount = Infinity;
+  } else {
+    items        = galleryData.items        || [];
+    previewCount = galleryData.previewCount ?? Infinity;
+  }
+
+  if (items.length === 0) {
+    el.innerHTML = '<p class="section-empty">No media.</p>';
     return;
   }
 
-  // Thumbnail grid
+  const visibleItems = items.slice(0, previewCount);
+  const hiddenCount  = items.length - visibleItems.length;
+
+  // ── Thumbnail grid ───────────────────────────────────────────
   const grid     = document.createElement('div');
   grid.className = 'gallery-grid';
 
-  gallery.forEach((item, i) => {
+  visibleItems.forEach((item, i) => {
     const btn = document.createElement('button');
     btn.className = 'gallery-thumb';
-    btn.setAttribute('aria-label', `View image ${item.id}: ${item.caption || ''}`);
+    btn.setAttribute('aria-label', `View item ${item.id}: ${item.caption || ''}`);
 
-    const img   = document.createElement('img');
-    img.src     = item.file;
-    img.alt     = item.caption || `Image ${item.id}`;
-    img.loading = 'lazy';
+    const type = getMediaType(item.file);
+
+    if (type === 'video') {
+      // <video preload="metadata" muted> — first frame becomes the thumbnail.
+      // Adding #t=0.001 forces most browsers to decode and display frame 0.
+      const vid        = document.createElement('video');
+      vid.className    = 'gallery-media';
+      vid.src          = item.file + '#t=0.001';
+      vid.preload      = 'metadata';
+      vid.muted        = true;
+      vid.setAttribute('playsinline', '');
+      btn.appendChild(vid);
+
+      // Play-icon overlay so users can tell this is a video at a glance.
+      const play       = document.createElement('span');
+      play.className   = 'gallery-play';
+      play.setAttribute('aria-hidden', 'true');
+      play.textContent = '▶';
+      btn.appendChild(play);
+    } else {
+      const img   = document.createElement('img');
+      img.className = 'gallery-media';
+      img.src     = item.file;
+      img.alt     = item.caption || `Image ${item.id}`;
+      img.loading = 'lazy';
+      btn.appendChild(img);
+    }
 
     const cap       = document.createElement('span');
     cap.className   = 'gallery-cap';
     cap.textContent = `${item.id}.  ${item.caption || ''}`;
-
-    btn.appendChild(img);
     btn.appendChild(cap);
+
     btn.addEventListener('click', () => openLightbox(i));
     grid.appendChild(btn);
   });
 
+  // ── Overflow tile ────────────────────────────────────────────
+  // If there are more items than previewCount, the last slot becomes
+  // a "+N" tile that opens the lightbox at the first hidden item.
+  if (hiddenCount > 0) {
+    const overflow       = document.createElement('button');
+    overflow.className   = 'gallery-thumb gallery-overflow';
+    overflow.setAttribute('aria-label', `View ${hiddenCount} more items`);
+    overflow.innerHTML   = `<span class="gallery-overflow-count">+${hiddenCount}</span>`;
+    overflow.addEventListener('click', () => openLightbox(previewCount));
+    grid.appendChild(overflow);
+  }
+
   el.appendChild(grid);
 
-  // Lightbox overlay — appended once to <body>
+  // ── Lightbox ─────────────────────────────────────────────────
+  // Uses a .lb-media container whose content is replaced on each
+  // open so that images and videos share the same layout.
   const lb     = document.createElement('div');
   lb.id        = 'lightbox';
   lb.className = 'lightbox';
   lb.setAttribute('role', 'dialog');
   lb.setAttribute('aria-modal', 'true');
-  lb.setAttribute('aria-label', 'Image viewer');
+  lb.setAttribute('aria-label', 'Media viewer');
   lb.hidden    = true;
 
   lb.innerHTML = `
     <button class="lb-close" aria-label="Close">✕</button>
-    <button class="lb-prev"  aria-label="Previous image">‹</button>
-    <button class="lb-next"  aria-label="Next image">›</button>
+    <button class="lb-prev"  aria-label="Previous">‹</button>
+    <button class="lb-next"  aria-label="Next">›</button>
     <div class="lb-content">
-      <img class="lb-img" src="" alt="" />
+      <div class="lb-media"></div>
       <p   class="lb-cap"></p>
     </div>
   `;
@@ -178,10 +238,32 @@ function renderGallery(gallery) {
   let cur = 0;
 
   function openLightbox(index) {
-    cur = ((index % gallery.length) + gallery.length) % gallery.length;
-    const item = gallery[cur];
-    lb.querySelector('.lb-img').src         = item.file;
-    lb.querySelector('.lb-img').alt         = item.caption || '';
+    // Pause any video that may already be playing in the lightbox.
+    const prev = lb.querySelector('.lb-media video');
+    if (prev) prev.pause();
+
+    cur = ((index % items.length) + items.length) % items.length;
+    const item      = items[cur];
+    const mediaWrap = lb.querySelector('.lb-media');
+    mediaWrap.innerHTML = '';   // clear previous media element
+
+    const type = getMediaType(item.file);
+    let mediaEl;
+
+    if (type === 'video') {
+      mediaEl          = document.createElement('video');
+      mediaEl.className = 'lb-img';   // reuses existing size/position rules
+      mediaEl.src      = item.file;
+      mediaEl.controls = true;
+      mediaEl.autoplay = true;
+    } else {
+      mediaEl           = document.createElement('img');
+      mediaEl.className = 'lb-img';
+      mediaEl.src       = item.file;
+      mediaEl.alt       = item.caption || '';
+    }
+
+    mediaWrap.appendChild(mediaEl);
     lb.querySelector('.lb-cap').textContent = `${item.id}.  ${item.caption || ''}`;
     lb.hidden = false;
     document.body.classList.add('no-scroll');
@@ -189,6 +271,8 @@ function renderGallery(gallery) {
   }
 
   function closeLightbox() {
+    const vid = lb.querySelector('.lb-media video');
+    if (vid) vid.pause();
     lb.hidden = true;
     document.body.classList.remove('no-scroll');
   }
@@ -197,10 +281,8 @@ function renderGallery(gallery) {
   lb.querySelector('.lb-prev').addEventListener('click',  () => openLightbox(cur - 1));
   lb.querySelector('.lb-next').addEventListener('click',  () => openLightbox(cur + 1));
 
-  // Click backdrop to close
   lb.addEventListener('click', (e) => { if (e.target === lb) closeLightbox(); });
 
-  // Keyboard: Esc, ←, →
   document.addEventListener('keydown', (e) => {
     if (lb.hidden) return;
     if (e.key === 'Escape')     { e.preventDefault(); closeLightbox(); }
@@ -208,7 +290,6 @@ function renderGallery(gallery) {
     if (e.key === 'ArrowRight') { e.preventDefault(); openLightbox(cur + 1); }
   });
 
-  // Expose for cross-linker in autoLink()
   window._gallery = { open: openLightbox };
 }
 

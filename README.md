@@ -103,10 +103,18 @@ corporate_fr.pdf
 * [x] Review French translations
 * [x] Review Spanish translations
 ### Content
+* [ ] CCCD2025 page
+	* [ ] Change the references, the ones are from a boilerplate
+	* [x] Update images
+	* [x] Add support for video
+	* [x] Add the videos!
+* [ ] Reading challenge 2026 page
+* [ ] [[MundialCansat2026]] page
+* [ ] [[Rocketry L1 Certification]]
+* [ ] [[ActInSpace2026 Bordeaux]] and [[ActInSpace2026 Bogotá]] page
 * [ ] CCCD2026 page
-* [ ] CCCD2025 page 
-* [ ] MuldialdeCansat2026 page
-* [ ] Reading challenge 2026 page 
+* [ ] [[PATACONERA]] page
+ 
 
 ## License
 

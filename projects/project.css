@@ -34,11 +34,51 @@
 .gallery-thumb:hover          { border-color: var(--border-mid); }
 .gallery-thumb:focus-visible  { outline: 1px solid var(--text-muted); outline-offset: 2px; }
 
-.gallery-thumb img {
+/* Applies equally to <img> and <video> inside a thumbnail */
+.gallery-thumb .gallery-media {
   width:        100%;
   aspect-ratio: 4 / 3;
   object-fit:   cover;
   display:      block;
+}
+
+/* Play-icon overlay for video thumbnails */
+.gallery-thumb {
+  position: relative;
+}
+
+.gallery-play {
+  position:       absolute;
+  left:           50%;
+  bottom:         calc(var(--s-8) + 1.5em);
+  transform:      translateX(-50%);
+  font-size:      1.75rem;
+  color:          rgba(255, 255, 255, 0.85);
+  text-shadow:    0 1px 8px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+}
+
+/* Overflow (+N) tile — matches thumbnail dimensions exactly */
+.gallery-overflow {
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  aspect-ratio:    4 / 3;
+  background:      var(--bg-raised);
+  border:          1px solid var(--border);
+  border-radius:   6px;
+  cursor:          pointer;
+  transition:      border-color var(--dur) var(--ease),
+                   background   var(--dur) var(--ease);
+}
+.gallery-overflow:hover { border-color: var(--border-mid); }
+
+.gallery-overflow-count {
+  font-family:    var(--mono);
+  font-size:      var(--t-24);
+  font-weight:    500;
+  color:          var(--text-muted);
+  letter-spacing: -0.02em;
 }
 
 .gallery-cap {

@@ -6,45 +6,67 @@
   "period": "2025-20",
   "role": "Team Lead - Design and Integration",
   "status": "Done",
-
-  "gallery": [
-    {
-      "id": 1,
-      "file": "assets/vehicle-cad.jpg",
-      "caption": "Full vehicle CAD assembly — preliminary design phase"
-    },
-    {
-      "id": 2,
-      "file": "assets/nosecone-cfd.jpg",
-      "caption": "CFD pressure distribution, nose cone, Mach 0.55"
-    },
-    {
-      "id": 3,
-      "file": "assets/fin-can.jpg",
-      "caption": "Fin-can structural detail, carbon fibre layup"
-    },
-    {
-      "id": 4,
-      "file": "assets/static-fire.jpg",
-      "caption": "Static fire test, motor M-001, March 2026"
-    }
-  ],
-
+  "gallery": {
+    "previewCount": 10,
+    "items": [
+      {
+        "id": 1,
+        "file": "assets/Screenshot 2026-07-02 153951.png",
+        "caption": "Attaching fins to main rocket fuselage"
+      },
+      {
+        "id": 2,
+        "file": "assets/team_photo.JPG",
+        "caption": "Team photo CCCD2025 with Mexican teams"
+      },
+      {
+        "id": 3,
+        "file": "assets/launch.MOV",
+        "caption": "Launch video"
+      },
+      {
+        "id": 4,
+        "file": "assets/PATACON2_sim2.png",
+        "caption": "Simulated launch photo"
+      },
+      {
+        "id": 5,
+        "file": "assets/Screenshot 2026-07-02 153846.png",
+        "caption": "CFD analyses were conducted in ANSYS Fluent"
+      },
+      {
+        "id": 6,
+        "file": "assets/POL_2348.jpg",
+        "caption": "Actual launch photo"
+      },
+      {
+        "id": 7,
+        "file": "assets/Screenshot 2026-07-02 153707.png",
+        "caption": "Team photo at Uniandes rapid prototyping lab LA MECHA"
+      },
+      {
+        "id": 8,
+        "file": "assets/mission_patch.png",
+        "caption": "Mission patch for P.A.T.A.C.O.N. 1"
+      },
+      {
+        "id": 9,
+        "file": "assets/PATACON2_sim2.png",
+        "caption": "Simulated launch photo"
+      },
+      {
+        "id": 10,
+        "file": "assets/Screenshot 2026-07-02 153929.png",
+        "caption": "Lamination process for main airframe"
+      }
+    ]
+  },
   "documents": [
     {
-      "title": "Preliminary Design Review (PDR)",
-      "file": "assets/pdr-cccd2026.pdf"
-    },
-    {
-      "title": "Critical Design Review (CDR)",
-      "file": "assets/cdr-cccd2026.pdf"
-    },
-    {
-      "title": "OpenRocket simulation file",
-      "file": "assets/cccd2026.ork"
+      "title": "P.A.T.A.C.O.N. 1 datasheet (Taken from final design review)",
+      "file": "PATACON1_datasheet.pdf"
     }
   ],
-
   "references": [
     {
       "id": 1,
