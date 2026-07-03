@@ -814,3 +814,38 @@ img { display: block; max-width: 100%; }
   }
 
 }
+
+/* Reading Challenge */
+
+#reading-challenge table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto;
+}
+
+#reading-challenge th,
+#reading-challenge td {
+    padding: 0.75rem 1rem;
+}
+
+#reading-challenge th:first-child,
+#reading-challenge td:first-child {
+    width: 45%;
+}
+
+#reading-challenge th:nth-child(2),
+#reading-challenge td:nth-child(2) {
+    width: 25%;
+}
+
+#reading-challenge th:not(:first-child):not(:nth-child(2)),
+#reading-challenge td:not(:first-child):not(:nth-child(2)) {
+    text-align: center;
+}
+
+/
+#reading-challenge > div:first-child {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+}
+///
