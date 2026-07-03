@@ -2,91 +2,91 @@
   "title": "Concurso Colombiano de Cohetería Deportiva 2025",
   "type": "Competition",
   "domain": "Aerospace Engineering / High-Power Rocketry",
-  "organization": "Universidad de los Andes - SpaceTech Rocketry",
-  "period": "2025-20",
-  "role": "Team Lead - Design and Integration",
-  "status": "Done",
+  "organization": "Universidad de los Andes · SpaceTech Rocketry",
+  "period": "2025",
+  "role": "Team Lead – Design and Integration",
+  "status": "Completed",
+
   "gallery": {
     "previewCount": 10,
     "items": [
       {
         "id": 1,
         "file": "assets/Screenshot 2026-07-02 153951.png",
-        "caption": "Attaching fins to main rocket fuselage"
+        "caption": "Attaching composite fins to the main airframe."
       },
       {
         "id": 2,
         "file": "assets/team_photo.JPG",
-        "caption": "Team photo CCCD2025 with Mexican teams"
+        "caption": "SpaceTech Rocketry team during CCCD 2025."
       },
       {
         "id": 3,
         "file": "assets/launch.MOV",
-        "caption": "Launch video"
+        "caption": "Launch of P.A.T.A.C.O.N. 1."
       },
       {
         "id": 4,
         "file": "assets/PATACON2_sim2.png",
-        "caption": "Simulated launch photo"
+        "caption": "OpenRocket flight simulation."
       },
       {
         "id": 5,
         "file": "assets/Screenshot 2026-07-02 153846.png",
-        "caption": "CFD analyses were conducted in ANSYS Fluent"
+        "caption": "CFD analysis performed in ANSYS Fluent."
       },
       {
         "id": 6,
         "file": "assets/POL_2348.jpg",
-        "caption": "Actual launch photo"
+        "caption": "Launch vehicle on the launch pad."
       },
       {
         "id": 7,
         "file": "assets/Screenshot 2026-07-02 153707.png",
-        "caption": "Team photo at Uniandes rapid prototyping lab LA MECHA"
+        "caption": "SpaceTech Rocketry at La Mecha rapid prototyping laboratory."
       },
       {
         "id": 8,
         "file": "assets/mission_patch.png",
-        "caption": "Mission patch for P.A.T.A.C.O.N. 1"
+        "caption": "Mission patch for P.A.T.A.C.O.N. 1."
       },
       {
         "id": 9,
         "file": "assets/PATACON2_sim2.png",
-        "caption": "Simulated launch photo"
+        "caption": "Vehicle simulation used during design iterations."
       },
       {
         "id": 10,
         "file": "assets/Screenshot 2026-07-02 153929.png",
-        "caption": "Lamination process for main airframe"
+        "caption": "Composite layup process for the primary airframe."
       }
     ]
   },
+
   "documents": [
     {
-      "title": "P.A.T.A.C.O.N. 1 datasheet (Taken from final design review)",
-      "file": "PATACON1_datasheet.pdf"
+      "id": 1,
+      "title": "P.A.T.A.C.O.N. 1 Datasheet",
+      "file": "assets/PATACON1_datasheet.pdf"
     }
   ],
+
   "references": [
     {
       "id": 1,
-      "citation": "Barrowman, J. S. (1967). The Practical Calculation of the Aerodynamic Characteristics of Slender Finned Vehicles. M.Sc. Thesis, The Catholic University of America, Washington D.C."
+      "citation": "Westerfield, M. (2014). Make: Rockets: Down-to-Earth Rocket Science. Maker Media."
     },
     {
       "id": 2,
-      "citation": "Mandell, G. K., Caporaso, G. A., & Bengen, W. P. (1973). Topics in Advanced Model Rocketry. MIT Press."
+      "citation": "Westerfield, M. (2017). Make: High-Power Rockets: Construction and Certification for Thousands of Feet and Beyond. Maker Media."
     },
     {
       "id": 3,
-      "citation": "NASA SP-8114 (1974). Solid Rocket Motor Scaling. NASA Space Vehicle Design Criteria."
+      "citation": "Stine, G. H., & Stine, B. (2004). Handbook of Model Rocketry (7th ed.). John Wiley & Sons."
     },
     {
       "id": 4,
-      "citation": "Nakka, R. (2005). Solid Propellant Rocket Motor Design and Testing. Richard Nakka's Experimental Rocketry. https://www.nakka-rocketry.net/"
-    },
-    {
-      "id": 5,
-      "citation": "OpenRocket Development Team (2023). OpenRocket Technical Documentation v23.09. https://openrocket.info/"
+      "citation": "Knacke, T. W. (1992). Parachute Recovery Systems Design Manual."
     }
   ]
 }

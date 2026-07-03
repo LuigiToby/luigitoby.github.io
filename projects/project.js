@@ -315,6 +315,7 @@ function renderDocuments(docs) {
     a.className   = 'doc-item';
     a.href        = doc.file;
     a.download    = '';
+    a.id = `doc-${doc.id}`;
 
     const ext     = (doc.file.split('.').pop() || 'FILE').toUpperCase().slice(0, 5);
 
@@ -380,8 +381,11 @@ function autoLink() {
   let node;
   while ((node = walker.nextNode())) nodes.push(node);
 
-  // Group 1 = image number, group 2 = reference number
-  const RE = /Img\.\s*(\d+)|\[(\d+)\]/g;
+// Group 1 = image number
+// Group 2 = document number
+// Group 3 = reference number
+
+  const RE = /Img\.\s*(\d+)|Doc\.\s*(\d+)|\[(\d+)\]/g;
 
   nodes.forEach(textNode => {
     const text = textNode.textContent;
@@ -417,9 +421,41 @@ function autoLink() {
           setTimeout(() => { if (window._gallery) window._gallery.open(zeroIdx); }, 120);
         });
 
-      } else {
+      } 
+      
+      else if (m[2] !== undefined) {
+        
+        const id = m[2];
+
+        a.textContent = m[0];
+        a.href = `#doc-${id}`;
+
+        a.addEventListener('click', (e) => {
+
+            e.preventDefault();
+
+            const doc = document.getElementById(`doc-${id}`);
+
+            if (!doc) return;
+
+            doc.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+
+            doc.classList.add('doc-highlight');
+
+            setTimeout(() => {
+                doc.classList.remove('doc-highlight');
+            }, 1200);
+
+        });
+      
+      }
+      else {
+        
         // ── [N] ─ reference cross-reference ─────────────────────
-        const id  = m[2];
+        const id  = m[3];
         a.textContent = m[0];
         a.href        = `#ref-${id}`;
 
@@ -428,8 +464,8 @@ function autoLink() {
           const refEl = document.getElementById(`ref-${id}`);
           if (refEl) refEl.scrollIntoView({ behavior: 'smooth' });
         });
-      }
 
+      }
       frag.appendChild(a);
       last = m.index + m[0].length;
     }

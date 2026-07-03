@@ -283,3 +283,9 @@ body.no-scroll { overflow: hidden; }
   font-size:   var(--t-13);
   color:       var(--text-muted);
 }
+
+.doc-highlight {
+    background: var(--bg-raised);
+    border-color: var(--text);
+    transition: background .3s ease;
+}
