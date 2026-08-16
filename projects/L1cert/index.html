@@ -11,43 +11,205 @@
   <title>0616 — Page Not Found</title>
 
   <style>
+    /*
+      0616 — Generic unfinished-project landing page
+
+      Theme:
+      Uses the site's existing design tokens from style.css.
+      No independent light/dark system is created here.
+    */
+
     .not-found {
-      min-height: calc(100vh - 140px);
+      position: relative;
+      min-height: calc(100vh - var(--header-height) - 80px);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .not-found-content {
+      position: relative;
+      z-index: 2;
     }
 
     .not-found-code {
       margin: 0;
+      color: var(--text);
+      font-family: var(--mono);
       font-size: clamp(5rem, 18vw, 12rem);
-      line-height: 0.85;
+      font-weight: 500;
+      line-height: 0.82;
       letter-spacing: -0.08em;
-      font-weight: 800;
     }
 
     .not-found-title {
-      margin: 42px 0 8px;
-      font-size: 1rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      margin: var(--s-40) 0 var(--s-8);
+      color: var(--text);
+      font-size: var(--t-17);
+      font-weight: 400;
+      letter-spacing: 0.04em;
     }
 
     .not-found-desc {
       max-width: 520px;
       margin: 0;
-      color: #666;
-      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-size: var(--t-13);
       line-height: 1.7;
     }
 
     .not-found-back {
       display: inline-block;
-      margin-top: 32px;
-      font-size: 0.75rem;
-      color: inherit;
+      margin-top: var(--s-32);
+      font-family: var(--mono);
+      font-size: var(--t-12);
+      color: var(--text-muted);
+      letter-spacing: 0.03em;
+      transition: color var(--dur) var(--ease);
+    }
+
+    .not-found-back:hover {
+      color: var(--text);
+    }
+
+    /*
+      Minimal meteor field.
+
+      Each meteor is a small dim streak moving diagonally across
+      the viewport. Opacity is intentionally low so it remains
+      secondary to the typography.
+    */
+
+    .meteor-field {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      overflow: hidden;
+      opacity: 0.7;
+    }
+
+    .meteor {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      background: var(--text);
+      border-radius: 50%;
+      box-shadow: 0 0 4px var(--text);
+      transform: rotate(-45deg);
+      opacity: 0;
+      animation: meteor-fall linear infinite;
+    }
+
+    .meteor::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: var(--trail, 55px);
+      height: 1px;
+      background: linear-gradient(
+        to left,
+        transparent,
+        var(--text-muted)
+      );
+      opacity: 0.55;
+    }
+
+    .meteor:nth-child(1) {
+      left: 18%;
+      top: -5%;
+      --trail: 70px;
+      animation-duration: 5.5s;
+      animation-delay: 0.4s;
+    }
+
+    .meteor:nth-child(2) {
+      left: 47%;
+      top: -8%;
+      --trail: 45px;
+      animation-duration: 7s;
+      animation-delay: 2.8s;
+    }
+
+    .meteor:nth-child(3) {
+      left: 76%;
+      top: 8%;
+      --trail: 60px;
+      animation-duration: 6.2s;
+      animation-delay: 1.2s;
+    }
+
+    .meteor:nth-child(4) {
+      left: 91%;
+      top: 28%;
+      --trail: 40px;
+      animation-duration: 8s;
+      animation-delay: 4s;
+    }
+
+    .meteor:nth-child(5) {
+      left: 63%;
+      top: 3%;
+      --trail: 35px;
+      animation-duration: 9s;
+      animation-delay: 5.5s;
+    }
+
+    .meteor:nth-child(6) {
+      left: 32%;
+      top: 18%;
+      --trail: 50px;
+      animation-duration: 8.5s;
+      animation-delay: 7s;
+    }
+
+    @keyframes meteor-fall {
+      0% {
+        opacity: 0;
+        transform: translate3d(0, 0, 0) rotate(-45deg);
+      }
+
+      8% {
+        opacity: 0.5;
+      }
+
+      35% {
+        opacity: 0.25;
+      }
+
+      55% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 0;
+        transform: translate3d(-260px, 260px, 0) rotate(-45deg);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .not-found {
+        min-height: calc(100vh - var(--header-height) - 48px);
+      }
+
+      .not-found-code {
+        font-size: clamp(4.5rem, 27vw, 8rem);
+      }
+
+      .meteor-field {
+        opacity: 0.5;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .meteor {
+        animation: none;
+        opacity: 0;
+      }
     }
   </style>
 </head>
@@ -58,6 +220,7 @@
 
   <header class="site-header">
     <div class="header-inner">
+
       <a href="../../" class="header-name">main</a>
 
       <nav class="header-nav">
@@ -68,6 +231,7 @@
       <div class="header-controls">
         <button id="mode-toggle" class="ctrl-btn" aria-label="Toggle theme">○</button>
       </div>
+
     </div>
   </header>
 
@@ -75,16 +239,29 @@
 
     <div class="not-found">
 
-      <p class="not-found-code">0616</p>
+      <div class="meteor-field" aria-hidden="true">
+        <span class="meteor"></span>
+        <span class="meteor"></span>
+        <span class="meteor"></span>
+        <span class="meteor"></span>
+        <span class="meteor"></span>
+        <span class="meteor"></span>
+      </div>
 
-      <h1 class="not-found-title">Page not found</h1>
+      <div class="not-found-content">
 
-      <p class="not-found-desc">
-        This project page has not been documented yet.
-        The project exists, but its documentation is still being developed.
-      </p>
+        <p class="not-found-code">0616</p>
 
-      <a href="../" class="not-found-back">← Projects</a>
+        <h1 class="not-found-title">Page not found</h1>
+
+        <p class="not-found-desc">
+          This project has not been documented yet.
+          The work exists, but its documentation is still being developed.
+        </p>
+
+        <a href="../" class="not-found-back">← Projects</a>
+
+      </div>
 
     </div>
 
@@ -99,11 +276,18 @@
 </div>
 
 <script>
+  /*
+    Keep the site's existing theme mechanism.
+
+    The button toggles the same body class used by style.css:
+    body.light-mode
+  */
+
   const toggle = document.getElementById("mode-toggle");
 
   if (toggle) {
     toggle.addEventListener("click", () => {
-      document.body.classList.toggle("dark");
+      document.body.classList.toggle("light-mode");
     });
   }
 </script>
