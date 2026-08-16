@@ -276,18 +276,22 @@
 </div>
 
 <script>
-  /*
-    Keep the site's existing theme mechanism.
+  const modeBtn = document.getElementById('mode-toggle');
 
-    The button toggles the same body class used by style.css:
-    body.light-mode
-  */
+  if (modeBtn) {
+    const applyTheme = (isLight) => {
+      document.body.classList.toggle('light-mode', isLight);
+      modeBtn.textContent = isLight ? '●' : '○';
+    };
 
-  const toggle = document.getElementById("mode-toggle");
+    // Use the same storage key as project.js
+    applyTheme(localStorage.getItem('mode') === 'light');
 
-  if (toggle) {
-    toggle.addEventListener("click", () => {
-      document.body.classList.toggle("light-mode");
+    modeBtn.addEventListener('click', () => {
+      const nowLight = !document.body.classList.contains('light-mode');
+
+      applyTheme(nowLight);
+      localStorage.setItem('mode', nowLight ? 'light' : 'dark');
     });
   }
 </script>
