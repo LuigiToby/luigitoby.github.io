@@ -679,25 +679,6 @@
     }
   </script>
   
-  <script>
-  const modeBtn = document.getElementById('mode-toggle');
-
-  if (modeBtn) {
-    const applyTheme = (isLight) => {
-      document.body.classList.toggle('light-mode', isLight);
-      modeBtn.textContent = isLight ? '●' : '○';
-    };
-
-    // Use the same storage key as project.js
-    applyTheme(localStorage.getItem('mode') === 'light');
-
-    modeBtn.addEventListener('click', () => {
-      const nowLight = !document.body.classList.contains('light-mode');
-
-      applyTheme(nowLight);
-      localStorage.setItem('mode', nowLight ? 'light' : 'dark');
-    });
-  }
-  </script>
+  <script src="../project.js"></script>
 </body>
 </html>
