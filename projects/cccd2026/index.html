@@ -9,34 +9,42 @@
 
   <title>CCCD2026 — SpaceTech</title>
 
+  <link rel="stylesheet" href="../../style.css" />
+
   <style>
-    :root {
-      --bg: #fff;
-      --fg: #111;
-      --muted: #666;
-      --line: #d9d9d9;
-      --soft: #f4f4f4;
-      --max: 1080px;
-    }
-
-    * { box-sizing: border-box; }
-
     html {
       scroll-behavior: smooth;
     }
 
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--fg);
-      font-family: "IBM Plex Mono", "JetBrains Mono", "Courier New", monospace;
-      line-height: 1.6;
+    /*
+      CCCD2026 page-specific styling.
+      Colors, typography and light/dark mode are inherited from style.css.
+    */
+
+    .cccd-page {
+      max-width: var(--page-max);
+      margin: 0 auto;
+      padding: var(--s-40) var(--page-px) var(--s-64);
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-      border-bottom: 1px solid currentColor;
+    .cccd-page a {
+      border-bottom: 0;
+    }
+
+    .cccd-page .site-header {
+      background: var(--bg);
+    }
+
+    .cccd-page,
+    .cccd-page section,
+    .cccd-page .card,
+    .cccd-page .requirement,
+    .cccd-page .countdown,
+    .cccd-page .progress {
+      transition:
+        background-color var(--dur) var(--ease),
+        color var(--dur) var(--ease),
+        border-color var(--dur) var(--ease);
     }
 
     .site {
@@ -44,11 +52,11 @@
     }
 
     .site-header {
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid var(--border);
     }
 
     .header-inner {
-      max-width: var(--max);
+      max-width: var(--page-max);
       margin: 0 auto;
       padding: 18px 24px;
       display: flex;
@@ -71,17 +79,15 @@
 
     .nav-link {
       border: 0;
-      color: var(--muted);
+      color: var(--text-muted);
     }
 
     .nav-link.active {
-      color: var(--fg);
+      color: var(--text);
     }
 
     main {
-      max-width: var(--max);
       margin: 0 auto;
-      padding: 72px 24px 100px;
     }
 
     .hero {
@@ -93,7 +99,7 @@
 
     .eyebrow {
       margin: 0 0 20px;
-      color: var(--muted);
+      color: var(--text-muted);
       font-size: 0.72rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
@@ -111,7 +117,7 @@
       max-width: 680px;
       margin: 32px 0 0;
       font-size: clamp(1rem, 2vw, 1.25rem);
-      color: var(--muted);
+      color: var(--text-muted);
     }
 
     .meta {
@@ -120,7 +126,7 @@
       flex-wrap: wrap;
       gap: 10px 28px;
       font-size: 0.72rem;
-      color: var(--muted);
+      color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.08em;
     }
@@ -134,11 +140,11 @@
       margin-bottom: 10px;
       font-size: 0.72rem;
       letter-spacing: 0.18em;
-      color: var(--muted);
+      color: var(--text-muted);
     }
 
     .countdown {
-      border: 1px solid var(--fg);
+      border: 1px solid var(--text);
       padding: 20px;
     }
 
@@ -156,7 +162,7 @@
 
     .label {
       margin-top: 7px;
-      color: var(--muted);
+      color: var(--text-muted);
       font-size: 0.58rem;
       letter-spacing: 0.18em;
     }
@@ -164,20 +170,20 @@
     .progress {
       height: 3px;
       margin-top: 20px;
-      background: var(--soft);
+      background: var(--glass-track-bg);
       overflow: hidden;
     }
 
     .progress-fill {
       width: 0;
       height: 100%;
-      background: var(--fg);
+      background: var(--text);
       transition: width 0.1s linear;
     }
 
     section {
       padding: 90px 0;
-      border-top: 1px solid var(--line);
+      border-top: 1px solid var(--border);
     }
 
     .section-label {
@@ -185,7 +191,7 @@
       font-size: 0.7rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--text-muted);
     }
 
     .overview {
@@ -202,8 +208,8 @@
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 1px;
-      background: var(--line);
-      border: 1px solid var(--line);
+      background: var(--border);
+      border: 1px solid var(--border);
     }
 
     .card {
@@ -213,7 +219,7 @@
     }
 
     .card-number {
-      color: var(--muted);
+      color: var(--text-muted);
       font-size: 0.65rem;
     }
 
@@ -224,7 +230,7 @@
 
     .card p {
       margin: 0;
-      color: var(--muted);
+      color: var(--text-muted);
       font-size: 0.86rem;
     }
 
@@ -235,7 +241,7 @@
     }
 
     .vehicle {
-      border-top: 2px solid var(--fg);
+      border-top: 2px solid var(--text);
       padding-top: 20px;
     }
 
@@ -247,7 +253,7 @@
 
     .vehicle .role {
       margin: 5px 0 22px;
-      color: var(--muted);
+      color: var(--text-muted);
       font-size: 0.7rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -255,7 +261,7 @@
 
     .vehicle ul {
       padding-left: 20px;
-      color: var(--muted);
+      color: var(--text-muted);
       font-size: 0.86rem;
     }
 
@@ -263,8 +269,8 @@
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       gap: 1px;
-      background: var(--line);
-      border: 1px solid var(--line);
+      background: var(--border);
+      border: 1px solid var(--border);
     }
 
     .requirement {
@@ -281,7 +287,7 @@
     .requirement span {
       display: block;
       margin-top: 8px;
-      color: var(--muted);
+      color: var(--text-muted);
       font-size: 0.62rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
@@ -295,23 +301,23 @@
     }
 
     footer {
-      border-top: 1px solid var(--line);
+      border-top: 1px solid var(--border);
     }
 
     .footer-inner {
-      max-width: var(--max);
+      max-width: var(--page-max);
       margin: 0 auto;
       padding: 24px;
       display: flex;
       justify-content: space-between;
       gap: 20px;
-      color: var(--muted);
+      color: var(--text-muted);
       font-size: 0.68rem;
     }
 
     @media (max-width: 760px) {
-      main {
-        padding-top: 48px;
+      .cccd-page {
+        padding-top: var(--s-24);
       }
 
       .hero {
@@ -348,17 +354,21 @@
 
     <header class="site-header">
       <div class="header-inner">
-        <a href="#" class="header-name">SpaceTech</a>
+        <a href="../../" class="header-name">main</a>
 
         <nav class="header-nav" aria-label="Main navigation">
-          <a href="#overview" class="nav-link">overview</a>
+          <a href="#overview" class="nav-link active">overview</a>
           <a href="#vehicles" class="nav-link">vehicles</a>
           <a href="#mission" class="nav-link">mission</a>
         </nav>
+
+        <div class="header-controls">
+          <button id="mode-toggle" class="ctrl-btn" aria-label="Toggle theme">○</button>
+        </div>
       </div>
     </header>
 
-    <main>
+    <main class="cccd-page">
 
       <section class="hero" style="border-top: 0; padding-top: 0;">
         <p class="eyebrow">Universidad de los Andes · SpaceTech Rocketry</p>
@@ -568,7 +578,7 @@
 
     </main>
 
-    <footer>
+    <footer class="site-footer">
       <div class="footer-inner">
         <span>CCCD2026 · SpaceTech Rocketry</span>
         <span>Universidad de los Andes</span>
@@ -637,6 +647,36 @@
 
     updateCountdown();
     setInterval(updateCountdown, 250);
+
+    /*
+      Use the site's existing theme class:
+      body.light-mode
+
+      Persist the choice so the project page behaves like the rest
+      of the personal site.
+    */
+    const modeToggle = document.getElementById("mode-toggle");
+
+    function applyTheme(mode) {
+      document.body.classList.toggle("light-mode", mode === "light");
+      if (modeToggle) {
+        modeToggle.textContent = mode === "light" ? "●" : "○";
+      }
+    }
+
+    const savedTheme = localStorage.getItem("theme");
+    applyTheme(savedTheme === "light" ? "light" : "dark");
+
+    if (modeToggle) {
+      modeToggle.addEventListener("click", () => {
+        const nextMode = document.body.classList.contains("light-mode")
+          ? "dark"
+          : "light";
+
+        applyTheme(nextMode);
+        localStorage.setItem("theme", nextMode);
+      });
+    }
   </script>
 </body>
 </html>
