@@ -96,26 +96,32 @@ corporate_fr.pdf
 * [-] Add project thumbnails > Discarted because it's not KISS
 ### CV
 * [ ] Complete corporate profile, rn is a copy of academy
-* [ ] Add languajes hiperlinks for certifications
-* [ ] Add L1 certification an in-general document certifications to the CV via links to website
+* [ ] Add languajes hiperlinks for certifications > Waiting for IELTS
+* [ ] Add L1 certification an in-general document certifications to the CV via links to website > Waiting for L1
 * [ ] Add project hyperlinks > Waiting to finish project pages
 * [ ] Add publication support > No publications still
 * [x] Review French translations
 * [x] Review Spanish translations
 ### Content
-* [ ] CCCD2025 page
-	* [ ] Change the references, the ones are from a boilerplate
+* [x] CCCD2025 page
+	* [x] Change the references, the ones are from a boilerplate
 	* [x] Update images
 	* [x] Add support for video
 	* [x] Add the videos!
 * [x] Reading challenge 2026 page
 * [ ] Reading challenge 2025 page
-* [ ] [[MundialCansat2026]] page
+* [ ] Reading challenge 2024 page
+* [ ] Reading challenge 2023 page
+* [ ] Reading challenge 2022 page
+* [ ] Add UNAL projects
+* [ ] [[IMEC2700]] project
+* [ ] [[IMEC3709]] project
+* [ ] [[ActInSpace2026 Bordeaux]] and [[ActInSpace2026 Bogotá]]
+* [ ] [[MundialCansat2026]]
 * [ ] [[Rocketry L1 Certification]]
 * [ ] [[ActInSpace2026 Bordeaux]] and [[ActInSpace2026 Bogotá]] page
-* [ ] CCCD2026 page
-* [ ] [[PATACONERA]] page
- 
+* [ ] CCCD2026 
+* [ ] [[PATACONERA]] 
 
 ## License
 

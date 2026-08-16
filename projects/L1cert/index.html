@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="description" content="Project page under construction." />
+
+  <link rel="stylesheet" href="../../style.css" />
+
+  <title>0616 — Page Not Found</title>
+
+  <style>
+    .not-found {
+      min-height: calc(100vh - 140px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .not-found-code {
+      margin: 0;
+      font-size: clamp(5rem, 18vw, 12rem);
+      line-height: 0.85;
+      letter-spacing: -0.08em;
+      font-weight: 800;
+    }
+
+    .not-found-title {
+      margin: 42px 0 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .not-found-desc {
+      max-width: 520px;
+      margin: 0;
+      color: #666;
+      font-size: 0.8rem;
+      line-height: 1.7;
+    }
+
+    .not-found-back {
+      display: inline-block;
+      margin-top: 32px;
+      font-size: 0.75rem;
+      color: inherit;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="site">
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../../" class="header-name">main</a>
+
+      <nav class="header-nav">
+        <a href="../" class="nav-link active">projects</a>
+        <a href="../../bookshelf/" class="nav-link">bookshelf</a>
+      </nav>
+
+      <div class="header-controls">
+        <button id="mode-toggle" class="ctrl-btn" aria-label="Toggle theme">○</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-content">
+
+    <div class="not-found">
+
+      <p class="not-found-code">0616</p>
+
+      <h1 class="not-found-title">Page not found</h1>
+
+      <p class="not-found-desc">
+        This project page has not been documented yet.
+        The project exists, but its documentation is still being developed.
+      </p>
+
+      <a href="../" class="not-found-back">← Projects</a>
+
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="footer-text">Luis Alejandro Rodríguez Arenas</span>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  const toggle = document.getElementById("mode-toggle");
+
+  if (toggle) {
+    toggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+    });
+  }
+</script>
+
+</body>
+</html>

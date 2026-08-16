@@ -1,3 +1,16 @@
+---
+created: 2026-07-14T19:55:25
+autor: "[[LuigiToby]]"
+inicio: 2026-01-01
+final: 
+art: 
+status: active
+priority: 0.8
+---
+#projects 
+___
+# Reading Challenge 2026
+___
 ```dataviewjs
 const CONFIG = {
   title: "reading",
@@ -24,8 +37,8 @@ await app.vault.adapter
 const CONFIG = {
   year: 2026,
   goalPages: 10800,
-  color: "purple",
-  scale: 1.5,
+  color: "gray",
+  scale: 1,
   showTable: true
 };
 

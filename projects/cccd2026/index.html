@@ -3,160 +3,640 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- description and title are overwritten by project.js from metadata.json -->
-  <meta name="description" content="" />
-  <link rel="icon" href="../../assets/profile.jpg" type="image/x-icon" />
-  <title>Project</title>
-  <link rel="stylesheet" href="../../style.css" />
-  <link rel="stylesheet" href="../project.css" />
+
+  <meta name="description" content="CCCD2026 — SpaceTech Rocketry at Universidad de los Andes. Two vehicles, one competition, and the next step toward LASC2027." />
+  <meta name="theme-color" content="#ffffff" />
+
+  <title>CCCD2026 — SpaceTech</title>
+
+  <style>
+    :root {
+      --bg: #fff;
+      --fg: #111;
+      --muted: #666;
+      --line: #d9d9d9;
+      --soft: #f4f4f4;
+      --max: 1080px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: "IBM Plex Mono", "JetBrains Mono", "Courier New", monospace;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid currentColor;
+    }
+
+    .site {
+      min-height: 100vh;
+    }
+
+    .site-header {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .header-name {
+      border: 0;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .header-nav {
+      display: flex;
+      gap: 24px;
+      font-size: 0.8rem;
+    }
+
+    .nav-link {
+      border: 0;
+      color: var(--muted);
+    }
+
+    .nav-link.active {
+      color: var(--fg);
+    }
+
+    main {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 72px 24px 100px;
+    }
+
+    .hero {
+      min-height: 72vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .eyebrow {
+      margin: 0 0 20px;
+      color: var(--muted);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(3.5rem, 12vw, 9rem);
+      line-height: 0.88;
+      letter-spacing: -0.07em;
+      font-weight: 800;
+    }
+
+    .hero-subtitle {
+      max-width: 680px;
+      margin: 32px 0 0;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--muted);
+    }
+
+    .meta {
+      margin-top: 42px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 28px;
+      font-size: 0.72rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .countdown-wrap {
+      margin-top: 56px;
+      max-width: 620px;
+    }
+
+    .countdown-title {
+      margin-bottom: 10px;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+    }
+
+    .countdown {
+      border: 1px solid var(--fg);
+      padding: 20px;
+    }
+
+    .timer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .value {
+      font-size: clamp(1.6rem, 5vw, 2.6rem);
+      line-height: 1;
+      font-weight: 800;
+    }
+
+    .label {
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 0.58rem;
+      letter-spacing: 0.18em;
+    }
+
+    .progress {
+      height: 3px;
+      margin-top: 20px;
+      background: var(--soft);
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      width: 0;
+      height: 100%;
+      background: var(--fg);
+      transition: width 0.1s linear;
+    }
+
+    section {
+      padding: 90px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-label {
+      margin: 0 0 32px;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .overview {
+      max-width: 780px;
+      font-size: clamp(1.15rem, 2.5vw, 1.7rem);
+      line-height: 1.45;
+    }
+
+    .overview p {
+      margin: 0 0 24px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .card {
+      background: var(--bg);
+      padding: 28px;
+      min-height: 250px;
+    }
+
+    .card-number {
+      color: var(--muted);
+      font-size: 0.65rem;
+    }
+
+    .card h3 {
+      margin: 24px 0 12px;
+      font-size: 1.2rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    .vehicles {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 32px;
+    }
+
+    .vehicle {
+      border-top: 2px solid var(--fg);
+      padding-top: 20px;
+    }
+
+    .vehicle h3 {
+      margin: 0;
+      font-size: 2rem;
+      letter-spacing: -0.04em;
+    }
+
+    .vehicle .role {
+      margin: 5px 0 22px;
+      color: var(--muted);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .vehicle ul {
+      padding-left: 20px;
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    .requirements {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .requirement {
+      background: var(--bg);
+      padding: 22px 16px;
+    }
+
+    .requirement strong {
+      display: block;
+      font-size: 1.4rem;
+      line-height: 1.1;
+    }
+
+    .requirement span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .closing {
+      max-width: 780px;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      line-height: 1.2;
+      letter-spacing: -0.04em;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 24px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 0.68rem;
+    }
+
+    @media (max-width: 760px) {
+      main {
+        padding-top: 48px;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 40px 0 80px;
+      }
+
+      .grid,
+      .vehicles {
+        grid-template-columns: 1fr;
+      }
+
+      .requirements {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .timer-grid {
+        gap: 8px;
+      }
+
+      .countdown {
+        padding: 16px;
+      }
+
+      .header-nav {
+        gap: 12px;
+      }
+    }
+  </style>
 </head>
+
 <body>
+  <div class="site">
 
-<div class="site">
+    <header class="site-header">
+      <div class="header-inner">
+        <a href="#" class="header-name">SpaceTech</a>
 
-  <!-- ─── Header ──────────────────────────────────────────────── -->
-  <header class="site-header">
-    <div class="header-inner">
-      <a href="../../" class="header-name">main</a>
-      <nav class="header-nav">
-        <a href="../" class="nav-link active">projects</a>
-        <a href="../../bookshelf/" class="nav-link">bookshelf</a>
-      </nav>
-      <div class="header-controls">
-        <button id="mode-toggle" class="ctrl-btn" aria-label="Toggle theme">○</button>
+        <nav class="header-nav" aria-label="Main navigation">
+          <a href="#overview" class="nav-link">overview</a>
+          <a href="#vehicles" class="nav-link">vehicles</a>
+          <a href="#mission" class="nav-link">mission</a>
+        </nav>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <!-- ─── Main ─────────────────────────────────────────────────── -->
-  <main class="page-content">
+    <main>
 
-    <a href="../" class="page-back">← Projects</a>
+      <section class="hero" style="border-top: 0; padding-top: 0;">
+        <p class="eyebrow">Universidad de los Andes · SpaceTech Rocketry</p>
 
-    <!-- Article header — auto-populated from metadata.json by project.js -->
-    <div id="project-header" class="article-header"></div>
+        <h1>CCCD<br>2026</h1>
 
-    <hr class="rule" />
+        <p class="hero-subtitle">
+          A university rocketry campaign focused on building reliable competition
+          systems while developing the engineering capabilities required for the
+          next generation of SpaceTech vehicles.
+        </p>
 
-    <!-- ═══════════════════════════════════════════════════════════
-         ARTICLE BODY
-         Write your content below. Rules:
+        <div class="meta">
+          <span>Colombian Collegiate Rocketry Competition</span>
+          <span>2026</span>
+          <span>SpaceTech Rocketry</span>
+        </div>
 
-           • Top-level sections must use <h2> with the IDs shown.
-           • Subsections inside Engineering may use <h3> freely.
-           • Cross-reference images  →  write:  Img. 2
-           • Cross-reference sources →  write:  [3]
-             project.js will automatically turn these into links.
-           • Gallery, Documents, and References are rendered
-             automatically — do not write their content here.
-         ═══════════════════════════════════════════════════════════ -->
-    <div class="article-body">
+        <div class="countdown-wrap">
+          <div class="countdown-title">CCCD2026 · 06 NOV 2026</div>
 
-      <h2 id="gallery">Gallery</h2>
-      <div id="project-gallery"></div>
+          <div class="countdown" id="countdown-panel">
+            <div class="timer-grid">
+              <div>
+                <div class="value" id="days">--</div>
+                <div class="label">DAYS</div>
+              </div>
+              <div>
+                <div class="value" id="hours">--</div>
+                <div class="label">HRS</div>
+              </div>
+              <div>
+                <div class="value" id="minutes">--</div>
+                <div class="label">MIN</div>
+              </div>
+              <div>
+                <div class="value" id="seconds">--</div>
+                <div class="label">SEC</div>
+              </div>
+            </div>
 
-      <h2 id="overview">Overview</h2>
-      <p>
-        The Concurso Colombiano de Cohetería Deportiva (CCCD) 2025 is the continuation of SpaceTech
-        Rocketry's programme at Universidad de los Andes. Building on the lessons of the 2025 campaign
-        — particularly the ejection charge failure that prevented parachute deployment — the 2026 vehicle
-        advances the structural design, recovery system, and avionics stack while maintaining the glass
-        fibre airframe approach established last year.
-      </p>
-      <p>
-        The full vehicle configuration is shown in Img. 1. Aerodynamic simulation results, including
-        CFD pressure distribution across the nose cone at cruise Mach number, are presented in Img. 2.
-      </p>
+            <div class="progress">
+              <div class="progress-fill" id="progress"></div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <h2 id="objectives">Objectives</h2>
-      <p>
-        The primary objectives for CCCD 2026 are:
-      </p>
-      <ul>
-        <li>Achieve a target apogee of 3,000 m AGL with a recovery landing within 600 m of the launch site.</li>
-        <li>Demonstrate a reliable dual-event recovery system after the 2025 ejection charge failure.</li>
-        <li>Design fin geometry optimising static margin per Barrowman theory [1] while minimising drag.</li>
-        <li>Integrate a custom flight computer for real-time telemetry and redundant deployment events.</li>
-      </ul>
+      <section id="overview">
+        <p class="section-label">01 / Overview</p>
 
-      <h2 id="engineering">Engineering</h2>
+        <div class="overview">
+          <p>
+            CCCD2026 is the main engineering objective of SpaceTech during 2026.
+            The campaign uses the competition as a platform to consolidate the
+            team's capabilities in design, simulation, manufacturing, avionics,
+            recovery, integration, documentation, and launch operations.
+          </p>
 
-      <h3>Aerodynamics</h3>
-      <p>
-        The aerodynamic design follows the extended Barrowman equations [1] implemented in OpenRocket [5].
-        A static stability margin of 1.8 calibres was selected as the design target — stable enough for
-        reliable flight without excessive weathercocking in the prevailing winds at the competition site.
-      </p>
-      <p>
-        CFD validation was conducted on the nose cone and fin-can geometries at Mach 0.35–0.65 using
-        a structured mesh with a y+ target of 1 on the wall. The pressure distribution at Mach 0.55
-        is shown in Img. 2, confirming attached flow at the leading edge of the ogive and localised
-        separation at the fin-body junction below the design angle of attack.
-      </p>
+          <p>
+            The project is organized around two complementary vehicles: Pollux,
+            a competition-focused evolution of PATACON-1, and Castor, an
+            experimental platform intended to develop technologies and processes
+            that can later support LASC2027.
+          </p>
+        </div>
+      </section>
 
-      <h3>Structures</h3>
-      <p>
-        The primary airframe is a 98 mm diameter filament-wound glass-fibre tube. Nose cone and fin
-        can are hand-laminated. The fin geometry was analysed per [2] to verify flutter safety at
-        maximum dynamic pressure. Img. 3 shows the fin-can carbon fibre layup detail.
-      </p>
-      <p>
-        Axial load cases at motor burnout and maximum-q define the structural sizing. A factor of safety
-        of 2.5 is applied to all composite members following NASA SP-8114 guidelines [3].
-      </p>
+      <section id="mission">
+        <p class="section-label">02 / Engineering objectives</p>
 
-      <h3>Recovery</h3>
-      <p>
-        The 2025 campaign suffered a single-point failure in the black-powder ejection charge circuit.
-        For 2026, a redundant dual-ematch recovery system is implemented, with separate charge wells
-        for drogue and main deployment. Deployment is triggered by barometric apogee detection with
-        an accelerometer-based backup, consistent with Nakka's dual-event methodology [4].
-      </p>
+        <div class="grid">
+          <article class="card">
+            <span class="card-number">01</span>
+            <h3>Reliability</h3>
+            <p>
+              Develop a repeatable vehicle and operational process, with recovery
+              treated as a primary engineering system rather than an afterthought.
+            </p>
+          </article>
 
-      <h3>Avionics</h3>
-      <p>
-        The flight computer runs a custom firmware stack on an STM32 microcontroller. It logs 10-DoF
-        IMU data, barometric altitude, GPS position, and ematch continuity at 100 Hz. Real-time
-        telemetry is transmitted at 433 MHz to a ground station. All flight data is retained on
-        internal flash and on an SD card.
-      </p>
+          <article class="card">
+            <span class="card-number">02</span>
+            <h3>Avionics</h3>
+            <p>
+              Mature telemetry, downlink, sensing, and flight electronics while
+              keeping the architecture compatible with future development.
+            </p>
+          </article>
 
-      <h2 id="results">Results</h2>
-      <p>
-        The static fire test of motor M-001 was completed in March 2026 (Img. 4), validating the
-        propellant grain design and nozzle throat area. Peak thrust was within 4% of the OpenRocket
-        prediction [5]. Full flight data will be added after the competition launch window.
-      </p>
+          <article class="card">
+            <span class="card-number">03</span>
+            <h3>Manufacturing</h3>
+            <p>
+              Improve composite manufacturing, testing, dimensional control, and
+              documentation so that processes can be reproduced by future teams.
+            </p>
+          </article>
 
-      <!-- ── Auto-populated sections ──────────────────────────────
-           The h2 headings below are part of the authored structure.
-           The content divs / ol are filled by project.js at load time.
-           Do not add content inside #project-gallery, #project-documents,
-           or #project-references — it will be overwritten.            -->
+          <article class="card">
+            <span class="card-number">04</span>
+            <h3>Integration</h3>
+            <p>
+              Develop a more disciplined approach to integrating structures,
+              recovery, payload, avionics, communications, and ground operations.
+            </p>
+          </article>
+        </div>
+      </section>
 
-      <h2 id="documents">Documents</h2>
-      <div id="project-documents"></div>
+      <section id="vehicles">
+        <p class="section-label">03 / Vehicles</p>
 
-      <h2 id="references">References</h2>
-      <ol id="project-references" class="ref-list"></ol>
+        <div class="vehicles">
+          <article class="vehicle">
+            <h3>Pollux</h3>
+            <div class="role">PATACON-2 · Competition Platform</div>
 
-    </div>
-    <!-- /.article-body -->
+            <p>
+              Pollux is the direct evolution of PATACON-1 and the team's primary
+              competition vehicle.
+            </p>
 
-  </main>
+            <ul>
+              <li>G80-7T motor</li>
+              <li>Glass-fibre composite structure</li>
+              <li>Integrated competition CanSat</li>
+              <li>Independent downlink</li>
+              <li>Focus on reliability and operational maturity</li>
+            </ul>
+          </article>
 
-  <!-- ─── Footer ───────────────────────────────────────────────── -->
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <span class="footer-text">Luis Alejandro Rodríguez Arenas</span>
-    </div>
-  </footer>
+          <article class="vehicle">
+            <h3>Castor</h3>
+            <div class="role">Experimental Platform · LASC2027 Precursor</div>
 
-</div>
+            <p>
+              Castor is intended to develop technologies and engineering practices
+              that go beyond the requirements of the competition.
+            </p>
 
-<!-- project.js handles theme toggle, metadata rendering, gallery,
-     documents, references, and cross-link substitution. -->
-<script src="../project.js"></script>
+            <ul>
+              <li>H135W-14A motor</li>
+              <li>Photography and video systems</li>
+              <li>Advanced integration concepts</li>
+              <li>Higher-altitude mission objectives</li>
+              <li>Technology development for LASC2027</li>
+            </ul>
+          </article>
+        </div>
+      </section>
 
+      <section>
+        <p class="section-label">04 / Design constraints</p>
+
+        <div class="requirements">
+          <div class="requirement">
+            <strong>≥ 80 cm</strong>
+            <span>Minimum length</span>
+          </div>
+
+          <div class="requirement">
+            <strong>≤ 1200 g</strong>
+            <span>Maximum mass</span>
+          </div>
+
+          <div class="requirement">
+            <strong>250–300 g</strong>
+            <span>CanSat mass</span>
+          </div>
+
+          <div class="requirement">
+            <strong>≥ 5:1</strong>
+            <span>Thrust / weight</span>
+          </div>
+
+          <div class="requirement">
+            <strong>≥ 2 cal</strong>
+            <span>Stability margin</span>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <p class="section-label">05 / Roadmap</p>
+
+        <div class="overview">
+          <p>
+            PATACON-1 established the team's first competitive vehicle. PATACON-1.5
+            is being used to recover knowledge, train members, and standardize
+            processes. CCCD2026 then becomes the next step: Pollux consolidates
+            competitive reliability while Castor begins developing the capabilities
+            required for LASC2027.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <p class="section-label">06 / Expected outcome</p>
+
+        <div class="closing">
+          CCCD2026 is not only a competition flight. It is a test of whether
+          SpaceTech can turn individual technical efforts into reliable,
+          documented, repeatable engineering systems.
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <span>CCCD2026 · SpaceTech Rocketry</span>
+        <span>Universidad de los Andes</span>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    /*
+      Countdown configuration.
+
+      The project notes currently use 06 November 2026 as the common
+      deadline for the PDR, CDR, web challenges, and oral presentation.
+      Change TARGET_DATE when the official launch date is confirmed.
+    */
+    const TARGET_DATE = "2026-11-06T12:00:00-05:00";
+
+    // Used only to calculate the visual progress bar.
+    const START_DATE = "2026-08-15T09:00:00-05:00";
+
+    const target = new Date(TARGET_DATE).getTime();
+    const start = new Date(START_DATE).getTime();
+
+    const pad = (value) => String(value).padStart(2, "0");
+
+    function updateCountdown() {
+      const now = Date.now();
+      let diff = target - now;
+
+      if (diff <= 0) {
+        document.getElementById("countdown-panel").innerHTML = `
+          <div style="
+            font-size: 1.3rem;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+          ">CCCD2026 — GO</div>
+        `;
+        return;
+      }
+
+      const days = Math.floor(diff / 86400000);
+      diff %= 86400000;
+
+      const hours = Math.floor(diff / 3600000);
+      diff %= 3600000;
+
+      const minutes = Math.floor(diff / 60000);
+      diff %= 60000;
+
+      const seconds = Math.floor(diff / 1000);
+
+      document.getElementById("days").textContent = pad(days);
+      document.getElementById("hours").textContent = pad(hours);
+      document.getElementById("minutes").textContent = pad(minutes);
+      document.getElementById("seconds").textContent = pad(seconds);
+
+      const progress = Math.min(
+        1,
+        Math.max(0, (now - start) / (target - start))
+      );
+
+      document.getElementById("progress").style.width =
+        (progress * 100).toFixed(2) + "%";
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 250);
+  </script>
 </body>
 </html>
