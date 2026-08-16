@@ -4,11 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <meta name="description" content="Project page under construction." />
+  <meta
+    name="description"
+    content="Project page under construction."
+  />
 
   <link rel="stylesheet" href="../../style.css" />
 
-  <title>0616 — Page Not Found</title>
+  <title>0616 - Page Not Found</title>
 
   <style>
     /*
@@ -16,18 +19,24 @@
 
       Theme:
       Uses the site's existing design tokens from style.css.
-      No independent light/dark system is created here.
+      Theme persistence is handled by project.js.
     */
+
+    /* =========================================================
+       PAGE LAYERS
+       ========================================================= */
 
     .not-found {
       position: relative;
+      z-index: 1;
       min-height: calc(100vh - var(--header-height) - 80px);
+
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
+
       overflow: hidden;
-      isolation: isolate;
     }
 
     .not-found-content {
@@ -35,8 +44,14 @@
       z-index: 2;
     }
 
+
+    /* =========================================================
+       0616 CONTENT
+       ========================================================= */
+
     .not-found-code {
       margin: 0;
+
       color: var(--text);
       font-family: var(--mono);
       font-size: clamp(5rem, 18vw, 12rem);
@@ -47,6 +62,7 @@
 
     .not-found-title {
       margin: var(--s-40) 0 var(--s-8);
+
       color: var(--text);
       font-size: var(--t-17);
       font-weight: 400;
@@ -56,6 +72,7 @@
     .not-found-desc {
       max-width: 520px;
       margin: 0;
+
       color: var(--text-muted);
       font-size: var(--t-13);
       line-height: 1.7;
@@ -64,10 +81,12 @@
     .not-found-back {
       display: inline-block;
       margin-top: var(--s-32);
+
+      color: var(--text-muted);
       font-family: var(--mono);
       font-size: var(--t-12);
-      color: var(--text-muted);
       letter-spacing: 0.03em;
+
       transition: color var(--dur) var(--ease);
     }
 
@@ -75,123 +94,177 @@
       color: var(--text);
     }
 
-    /*
-      Minimal meteor field.
 
-      Each meteor is a small dim streak moving diagonally across
-      the viewport. Opacity is intentionally low so it remains
-      secondary to the typography.
-    */
+    /* =========================================================
+       METEOR FIELD
+
+       The field is intentionally outside .not-found so it is
+       independent from the page's stacking context.
+
+       Each meteor is a small stack of plain ASCII "/" glyphs
+       (no blur/glow). "/" is already drawn on the same NE-SW
+       diagonal the meteor falls along, so the head sits at
+       offset (0,0) and each trailing glyph is nudged up-right
+       (opposite the direction of travel) with lower opacity -
+       that's the whole trail, done with real characters.
+
+       Fallback colors (var(--text, #141414)) keep the field
+       visible even if ../../style.css fails to load.
+       ========================================================= */
 
     .meteor-field {
-      position: absolute;
+      position: fixed;
       inset: 0;
-      z-index: 1;
+
+      z-index: 0;
+
       pointer-events: none;
       overflow: hidden;
-      opacity: 0.7;
+
+      /* Keep the effect subtle */
+      opacity: 0.8;
     }
 
     .meteor {
       position: absolute;
-      width: 1px;
-      height: 1px;
-      background: var(--text);
-      border-radius: 50%;
-      box-shadow: 0 0 4px var(--text);
-      transform: rotate(-45deg);
+
+      font-family: var(--mono, monospace);
+      font-size: 1.2rem;
+      line-height: 1;
+
       opacity: 0;
-      animation: meteor-fall linear infinite;
+
+      animation: meteor-fall 6s linear infinite;
     }
 
-    .meteor::after {
-      content: "";
+    .meteor span {
       position: absolute;
-      right: 0;
       top: 0;
-      width: var(--trail, 55px);
-      height: 1px;
-      background: linear-gradient(
-        to left,
-        transparent,
-        var(--text-muted)
-      );
-      opacity: 0.55;
+      left: 0;
+
+      color: var(--text, #141414);
     }
 
-    .meteor:nth-child(1) {
-      left: 18%;
-      top: -5%;
-      --trail: 70px;
-      animation-duration: 5.5s;
-      animation-delay: 0.4s;
+    /* Head: full strength, no offset */
+    .meteor span:nth-child(1) {
+      opacity: 1;
+      transform: translate(0, 0);
     }
 
-    .meteor:nth-child(2) {
-      left: 47%;
-      top: -8%;
-      --trail: 45px;
-      animation-duration: 7s;
-      animation-delay: 2.8s;
+    /* Trail: each glyph further up-right, further faded */
+    .meteor span:nth-child(2) {
+      opacity: 0.7;
+      transform: translate(6px, -6px);
     }
 
-    .meteor:nth-child(3) {
-      left: 76%;
+    .meteor span:nth-child(3) {
+      opacity: 0.45;
+      transform: translate(12px, -12px);
+    }
+
+    .meteor span:nth-child(4) {
+      opacity: 0.25;
+      transform: translate(18px, -18px);
+    }
+
+    .meteor span:nth-child(5) {
+      opacity: 0.1;
+      transform: translate(24px, -24px);
+    }
+
+
+    /* =========================================================
+       METEOR POSITIONS
+
+       Different delays prevent the animation from looking
+       synchronized or repetitive.
+       ========================================================= */
+
+    .meteor:nth-of-type(1) {
+      left: 12%;
       top: 8%;
-      --trail: 60px;
-      animation-duration: 6.2s;
+
+      animation-delay: 0s;
+    }
+
+    .meteor:nth-of-type(2) {
+      left: 34%;
+      top: 2%;
+
+      animation-delay: 2.1s;
+    }
+
+    .meteor:nth-of-type(3) {
+      left: 57%;
+      top: 14%;
+
+      animation-delay: 4.3s;
+    }
+
+    .meteor:nth-of-type(4) {
+      left: 76%;
+      top: 5%;
+
       animation-delay: 1.2s;
     }
 
-    .meteor:nth-child(4) {
+    .meteor:nth-of-type(5) {
       left: 91%;
       top: 28%;
-      --trail: 40px;
-      animation-duration: 8s;
-      animation-delay: 4s;
+
+      animation-delay: 3.5s;
     }
 
-    .meteor:nth-child(5) {
-      left: 63%;
-      top: 3%;
-      --trail: 35px;
-      animation-duration: 9s;
-      animation-delay: 5.5s;
+    .meteor:nth-of-type(6) {
+      left: 45%;
+      top: 35%;
+
+      animation-delay: 5.2s;
     }
 
-    .meteor:nth-child(6) {
-      left: 32%;
-      top: 18%;
-      --trail: 50px;
-      animation-duration: 8.5s;
-      animation-delay: 7s;
-    }
+
+    /* =========================================================
+       METEOR ANIMATION
+       ========================================================= */
 
     @keyframes meteor-fall {
+
       0% {
         opacity: 0;
-        transform: translate3d(0, 0, 0) rotate(-45deg);
+
+        transform: translate3d(0, 0, 0);
       }
 
-      8% {
-        opacity: 0.5;
+      5% {
+        opacity: 0.85;
       }
 
-      35% {
-        opacity: 0.25;
+      18% {
+        opacity: 0.6;
       }
 
-      55% {
+      32% {
+        opacity: 0.2;
+      }
+
+      42% {
         opacity: 0;
       }
 
       100% {
         opacity: 0;
-        transform: translate3d(-260px, 260px, 0) rotate(-45deg);
+
+        transform: translate3d(-260px, 260px, 0);
       }
     }
 
+
+    /* =========================================================
+       MOBILE
+       ========================================================= */
+
     @media (max-width: 600px) {
+
       .not-found {
         min-height: calc(100vh - var(--header-height) - 48px);
       }
@@ -201,11 +274,21 @@
       }
 
       .meteor-field {
-        opacity: 0.5;
+        opacity: 0.65;
+      }
+
+      .meteor {
+        font-size: 1rem;
       }
     }
 
+
+    /* =========================================================
+       ACCESSIBILITY
+       ========================================================= */
+
     @media (prefers-reduced-motion: reduce) {
+
       .meteor {
         animation: none;
         opacity: 0;
@@ -218,48 +301,101 @@
 
 <div class="site">
 
+  <!-- =======================================================
+       GLOBAL METEOR FIELD
+       ======================================================= -->
+
+  <div class="meteor-field" aria-hidden="true">
+
+    <span class="meteor">
+      <span>/</span><span>/</span><span>/</span><span>/</span><span>/</span>
+    </span>
+    <span class="meteor">
+      <span>/</span><span>/</span><span>/</span><span>/</span><span>/</span>
+    </span>
+    <span class="meteor">
+      <span>/</span><span>/</span><span>/</span><span>/</span><span>/</span>
+    </span>
+    <span class="meteor">
+      <span>/</span><span>/</span><span>/</span><span>/</span><span>/</span>
+    </span>
+    <span class="meteor">
+      <span>/</span><span>/</span><span>/</span><span>/</span><span>/</span>
+    </span>
+    <span class="meteor">
+      <span>/</span><span>/</span><span>/</span><span>/</span><span>/</span>
+    </span>
+
+  </div>
+
+
+  <!-- =======================================================
+       HEADER
+       ======================================================= -->
+
   <header class="site-header">
+
     <div class="header-inner">
 
-      <a href="../../" class="header-name">main</a>
+      <a href="../../" class="header-name">
+        main
+      </a>
 
       <nav class="header-nav">
-        <a href="../" class="nav-link active">projects</a>
-        <a href="../../bookshelf/" class="nav-link">bookshelf</a>
+
+        <a href="../" class="nav-link active">
+          projects
+        </a>
+
+        <a href="../../bookshelf/" class="nav-link">
+          bookshelf
+        </a>
+
       </nav>
 
       <div class="header-controls">
-        <button id="mode-toggle" class="ctrl-btn" aria-label="Toggle theme">○</button>
+
+        <button
+          id="mode-toggle"
+          class="ctrl-btn"
+          aria-label="Toggle theme"
+        >
+          ○
+        </button>
+
       </div>
 
     </div>
+
   </header>
+
+
+  <!-- =======================================================
+       CONTENT
+       ======================================================= -->
 
   <main class="page-content">
 
     <div class="not-found">
 
-      <div class="meteor-field" aria-hidden="true">
-        <span class="meteor"></span>
-        <span class="meteor"></span>
-        <span class="meteor"></span>
-        <span class="meteor"></span>
-        <span class="meteor"></span>
-        <span class="meteor"></span>
-      </div>
-
       <div class="not-found-content">
 
-        <p class="not-found-code">0616</p>
+        <p class="not-found-code">
+          0616
+        </p>
 
-        <h1 class="not-found-title">Page not found</h1>
+        <h1 class="not-found-title">
+          Page not found
+        </h1>
 
         <p class="not-found-desc">
           This project has not been documented yet.
           The work exists, but its documentation is still being developed.
         </p>
 
-        <a href="../" class="not-found-back">← Projects</a>
+        <a href="../" class="not-found-back">
+          ← Projects
+        </a>
 
       </div>
 
@@ -267,13 +403,33 @@
 
   </main>
 
+
+  <!-- =======================================================
+       FOOTER
+       ======================================================= -->
+
   <footer class="site-footer">
+
     <div class="footer-inner">
-      <span class="footer-text">Luis Alejandro Rodríguez Arenas</span>
+
+      <span class="footer-text">
+        Luis Alejandro Rodríguez Arenas
+      </span>
+
     </div>
+
   </footer>
 
 </div>
+
+
+<!-- =========================================================
+     SHARED PROJECT ENGINE
+
+     Handles:
+     - dark/light mode
+     - localStorage persistence
+     ========================================================= -->
 
 <script src="../project.js"></script>
 
